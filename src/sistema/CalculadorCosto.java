@@ -19,6 +19,14 @@ public class CalculadorCosto {
 	public double calcular(Localidad a, Localidad b) {
 		
 		double distancia = calc.calcular(a, b);
-		return distancia*costo_km;
+		double costo = distancia*costo_km;
+		
+		if(a.getProvincia().equals(b.getProvincia())) { //Si son provincias dstintas..
+			costo += costo_fijo_povincia; 
+		}
+		if(distancia > 300) {
+			costo += costo*this.porcentaje_300km;
+		}
+		return costo;
 	}
 }

@@ -21,4 +21,7 @@ public class Localidad {
 	public double getLongitud() {
 		return longitud;
 	}
+	public String getProvincia() {
+		return provincia;
+	}
 }
