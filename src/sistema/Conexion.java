@@ -12,4 +12,14 @@ public class Conexion {
 		this.destino = destino;
 		this.costo = costo;
 	}
+	
+	public Localidad getOrigen() {
+		return origen;
+	}
+	public Localidad getDestino() {
+		return destino;
+	}
+	public double getCosto() {
+		return costo;
+	}
 }
