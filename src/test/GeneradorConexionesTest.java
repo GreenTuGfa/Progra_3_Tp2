@@ -12,7 +12,11 @@ class GeneradorConexionesTest {
 
 	
 	@Test
-	void cantidadConexiones() {
+	void cantidadConexionesCorretas() {
+		
+		/***
+		 * Cantidad de conexiones = n(n-1)/2. Con n siendo la cantidad de nodos (localidades)
+		 * */
 		List<Localidad>localidades = List.of(
 				new Localidad("a","",0,0), 
 				new Localidad("b","",0,0), 
