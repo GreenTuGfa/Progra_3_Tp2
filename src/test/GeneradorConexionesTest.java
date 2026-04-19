@@ -4,37 +4,54 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
+import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import sistema.*;
 
 class GeneradorConexionesTest {
+	
+	private List<Localidad> localidades;
+    private List<Conexion> conexiones;
 
-	List<Localidad>localidades = List.of(
-			new Localidad("a","",0,0), 
-			new Localidad("b","",0,0), 
-			new Localidad("c","",0,0),
-			new Localidad("d","",0,0));
-	
-	GeneradorConexiones generadorConexiones = new GeneradorConexiones();
-	
-	List<Conexion>conexiones = generadorConexiones.generarConexiones(localidades);
-	
-	@Test
-	void cantidadConexionesCorretas() {
-		
-		/***
-		 * Cantidad de conexiones = n(n-1)/2. Con n siendo la cantidad de nodos (localidades)
-		 * */
-		
-		assertEquals(conexiones.size(),6);
-	}
-	@Test
-	void conexionesSinLoops() {
-		
-		for (Conexion conexion : conexiones) {
-			assertNotEquals(conexion.getOrigen(), conexion.getDestino());
-		}
-	}
+    @BeforeEach
+    public void inicializar() {
+        localidades = List.of(
+                new Localidad("a","",-54.550,34.123), 
+                new Localidad("b","",108.23,15.423), 
+                new Localidad("c","",-15.783,27.909),
+                new Localidad("d","",-32.947,-21.672)
+        );
+
+        CalculadorCosto calc = new CalculadorCosto(1000, 30, 10000);
+        GeneradorConexiones generadorConexiones = new GeneradorConexiones(calc);
+        conexiones = generadorConexiones.generarConexiones(localidades);
+    }
+
+    @Test
+    void cantidadConexionesCorrectas() {
+        // n(n-1)/2 = 4*3/2 = 6
+        assertEquals(6, conexiones.size());
+        
+    }
+
+    @Test
+    void conexionesSinLoops() {
+        for (Conexion conexion : conexiones) {
+            assertNotEquals(conexion.getOrigen(), conexion.getDestino());
+        }
+    }
+ 
+    @Test
+    void costosConexionCorrecto() {
+    	Conexion c = conexiones.get(0);
+    	CalculadorCosto calc = new CalculadorCosto(1000, 30, 10000);
+        double esperado = calc.calcular(c.getOrigen(),c.getDestino());
+
+        assertEquals(esperado, c.getCosto(), 0.0001);
+    }
 
 }
+

@@ -8,8 +8,8 @@ public class GeneradorConexiones {
 
 	CalculadorCosto calc;
 	
-	public GeneradorConexiones() {
-		calc = new CalculadorCosto(0, 0, 0);
+	public GeneradorConexiones(CalculadorCosto calc) {
+		this.calc = calc;
 	}
 	
 	public List<Conexion> generarConexiones(List<Localidad> localidades) {
