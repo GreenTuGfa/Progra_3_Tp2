@@ -22,4 +22,10 @@ public class Conexion {
 	public double getCosto() {
 		return costo;
 	}
+	
+	@Override
+	public String toString() {
+		
+		return "Desde: " + this.origen + ". Hasta: " + this.destino + ". Coste: " + this.costo;
+	}
 }

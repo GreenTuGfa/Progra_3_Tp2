@@ -6,13 +6,13 @@ import sistema.*;
 
 public class GeneradorConexiones {
 
-	CalculadorCosto calc;
+	CalculadorCostos calc;
 	
-	public GeneradorConexiones(CalculadorCosto calc) {
+	public GeneradorConexiones(CalculadorCostos calc) {
 		this.calc = calc;
 	}
 	
-	public List<Conexion> generarConexiones(List<Localidad> localidades) {
+	public List<Conexion> generarConexiones(List<Localidad> localidades, ParametrosCostos param) {
 		
 		List<Conexion> conexiones = new ArrayList<Conexion>();
 		
@@ -22,7 +22,7 @@ public class GeneradorConexiones {
 				Localidad a = localidades.get(i);
 				Localidad b = localidades.get(j);
 				
-				double costo = calc.calcular(a, b);
+				double costo = calc.calcular(a, b,param);
 				
 				Conexion conexion = new Conexion(a, b, costo);
 				conexiones.add(conexion);

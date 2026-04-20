@@ -25,9 +25,10 @@ class GeneradorConexionesTest {
                 new Localidad("d","",-32.947,-21.672)
         );
 
-        CalculadorCosto calc = new CalculadorCosto(1000, 30, 10000);
+        ParametrosCostos costos = new ParametrosCostos(1000, 30, 10000);
+        CalculadorCostos calc = new CalculadorCostos();
         GeneradorConexiones generadorConexiones = new GeneradorConexiones(calc);
-        conexiones = generadorConexiones.generarConexiones(localidades);
+        conexiones = generadorConexiones.generarConexiones(localidades,costos);
     }
 
     @Test
@@ -47,8 +48,10 @@ class GeneradorConexionesTest {
     @Test
     void costosConexionCorrecto() {
     	Conexion c = conexiones.get(0);
-    	CalculadorCosto calc = new CalculadorCosto(1000, 30, 10000);
-        double esperado = calc.calcular(c.getOrigen(),c.getDestino());
+    	
+    	ParametrosCostos costos = new ParametrosCostos(1000, 30, 10000);
+    	CalculadorCostos calc = new CalculadorCostos();
+        double esperado = calc.calcular(c.getOrigen(),c.getDestino(),costos);
 
         assertEquals(esperado, c.getCosto(), 0.0001);
     }
