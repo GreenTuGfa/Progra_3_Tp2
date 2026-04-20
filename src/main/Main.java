@@ -21,7 +21,8 @@ public class Main {
 		List<Conexion>conexiones = new ArrayList<Conexion>();
 		
 		GeneradorConexiones generadorConexiones = new GeneradorConexiones(calc);
-		generadorConexiones.generarConexiones(localidades, param);
+		conexiones = generadorConexiones.generarConexiones(localidades, param);
+		
 		
 		for (Conexion conexion : conexiones) {
 			System.out.println(conexion.toString());

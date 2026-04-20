@@ -24,4 +24,9 @@ public class Localidad {
 	public String getProvincia() {
 		return provincia;
 	}
+	
+	@Override
+	public String toString() {
+		return this.nombre;
+	}
 }
