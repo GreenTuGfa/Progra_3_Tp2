@@ -1,9 +1,14 @@
 package sistema;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 	La clase esta implementada a partir de un Map que almacena las componentes conexas, y no a partir de un Array,
+ * que es como se enseño en clase. De esta forma me parece mas legible y facil de entender, aunque desconosco 
+ * si tiene un mejor o peor rendimiento en comparacion a un array con indices. Por las dudas recomiendo crear una 
+ * alternativa hacha a partir de un Array para tener a mano.
+ * */
 public class UnionFind {
 
 	private Map<Localidad,Localidad> padre;
@@ -16,7 +21,8 @@ public class UnionFind {
     }
 	public Localidad find(Localidad l) {
         if (padre.get(l) != l) {
-            padre.put(l, find(padre.get(l))); // compresión de camino
+            padre.put(l, find(padre.get(l))); // Se pone como padre, al padre del padre. 
+            								 //  Ejm: 3->2, 2->1, 1->1 pasa a 3->1, 2->1, 1->1			
         }
         return padre.get(l);
     }
@@ -29,13 +35,5 @@ public class UnionFind {
         }
     }
 
-	public static void main(String[] args) {
-		Map<Integer,Integer>mapa = new HashMap<Integer,Integer>();
-		
-		mapa.put(1, 1);
-		mapa.put(1, 2);
-		mapa.put(1, 3);
-		System.out.println(mapa.get(1));
-		
-	}
+
 }

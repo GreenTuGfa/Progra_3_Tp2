@@ -3,7 +3,8 @@ package sistema;
 /**
  *	La idea de la clase es poder tener distintos parametros con costes, para un mismo 'CalculadorCoste',
  *de manera que no sea necesario crear siempre un 'CalculadorCoste' cada vez que quieroprobar distintos valores.
- *Esto a su vez sirve para poder hacer test con distintos valores de parameros.
+ *Esto a su vez sirve para poder hacer test con distintos valores de parameros. Sin embargo, la clase no es
+ *estrictamente necesaria
  *
  * */
 public class ParametrosCostos {
