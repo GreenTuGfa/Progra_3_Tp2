@@ -13,7 +13,7 @@ public class CalculadorCostos {
 		double distancia = calc.calcular(a, b);
 		double costo = distancia*param.precio_km;
 		
-		if(a.getProvincia().equals(b.getProvincia())) { //Si son provincias dstintas..
+		if(!a.getProvincia().equals(b.getProvincia())) { //Si son provincias dstintas..
 			costo += param.costo_fjo_provincia; 
 		}
 		if(distancia > 300) {
