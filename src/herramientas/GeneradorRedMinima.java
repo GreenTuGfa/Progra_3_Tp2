@@ -14,7 +14,7 @@ public class GeneradorRedMinima { //IMplementa el AGM
         //Ordena por costo
         conexiones.sort(Comparator.comparingDouble(Conexion::getCosto));
 
-        UnionFind uf = new UnionFind(localidades);
+        GestorConectividad gf = new GestorConectividad(localidades); //Union-Find
 
         List<Conexion> resultado = new ArrayList<>();
 
@@ -24,10 +24,10 @@ public class GeneradorRedMinima { //IMplementa el AGM
             Localidad b = c.getDestino();
 
             // Verifica si existe un circuito
-            if (uf.find(a) != uf.find(b)) {
+            if (gf.find(a) != gf.find(b)) {
 
                 resultado.add(c);
-                uf.union(a, b);
+                gf.union(a, b);
             }
 
             // Condición de corte

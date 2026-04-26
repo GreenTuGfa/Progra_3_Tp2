@@ -20,6 +20,7 @@ public class GeneradorConexiones {
 		List<Conexion> conexiones = new ArrayList<Conexion>();
 		
 		for (int i = 0; i < localidades.size(); i++) {
+			
 			for (int j = i + 1; j < localidades.size(); j++) {
 				
 				Localidad a = localidades.get(i);

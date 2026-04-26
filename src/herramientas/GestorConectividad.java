@@ -6,16 +6,17 @@ import java.util.Map;
 import modelos.Localidad;
 
 /**
+ * IMPLEMENTA EL UNION FIND
  * 	La clase esta implementada a partir de un Map que almacena las componentes conexas, y no a partir de un Array,
  * que es como se enseño en clase. De esta forma me parece mas legible y facil de entender, aunque desconosco 
  * si tiene un mejor o peor rendimiento en comparacion a un array con indices. Por las dudas recomiendo crear una 
  * alternativa hacha a partir de un Array para tener a mano.
  * */
-public class UnionFind {
+public class GestorConectividad {
 
 	private Map<Localidad,Localidad> padre;
 	
-	public UnionFind(List<Localidad> localidades) {
+	public GestorConectividad(List<Localidad> localidades) {
 		
         for (Localidad l : localidades) {
             padre.put(l, l); //Al inicializarse cada localidad se "representa" a si misma
