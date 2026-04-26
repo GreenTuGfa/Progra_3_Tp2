@@ -1,7 +1,10 @@
-package sistema;
+package herramientas;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelos.Conexion;
+import modelos.Localidad;
+import modelos.ParametrosCostos;
 import sistema.*;
 
 public class GeneradorConexiones {

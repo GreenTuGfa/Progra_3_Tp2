@@ -9,6 +9,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import herramientas.CalculadorCostos;
+import herramientas.GeneradorConexiones;
+import modelos.Conexion;
+import modelos.Localidad;
+import modelos.ParametrosCostos;
 import sistema.*;
 
 class GeneradorConexionesTest {

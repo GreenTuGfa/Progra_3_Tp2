@@ -1,4 +1,7 @@
-package sistema;
+package herramientas;
+
+import modelos.Localidad;
+import modelos.ParametrosCostos;
 
 public class CalculadorCostos {
 
@@ -11,13 +14,13 @@ public class CalculadorCostos {
 	public double calcular(Localidad a, Localidad b,ParametrosCostos param) {
 		
 		double distancia = calc.calcular(a, b);
-		double costo = distancia*param.precio_km;
+		double costo = distancia*param.getPrecio_km();
 		
 		if(!a.getProvincia().equals(b.getProvincia())) { //Si son provincias dstintas..
-			costo += param.costo_fjo_provincia; 
+			costo += param.getCosto_fjo_provincia(); 
 		}
 		if(distancia > 300) {
-			costo += costo*param.porcentaje_extra;
+			costo += costo*param.getPorcentaje_extra();
 		}
 		return costo;
 	}

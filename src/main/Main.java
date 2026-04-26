@@ -2,6 +2,11 @@ package main;
 import java.util.ArrayList;
 import java.util.List;
 
+import herramientas.CalculadorCostos;
+import herramientas.GeneradorConexiones;
+import modelos.Conexion;
+import modelos.Localidad;
+import modelos.ParametrosCostos;
 import sistema.*;
 
 public class Main {

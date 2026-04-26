@@ -1,4 +1,4 @@
-package sistema;
+package modelos;
 
 /**
  *	La idea de la clase es poder tener distintos parametros con costes, para un mismo 'CalculadorCoste',
@@ -9,9 +9,9 @@ package sistema;
  * */
 public class ParametrosCostos {
 
-	double precio_km;
-	double porcentaje_extra;
-	double costo_fjo_provincia;
+	private double precio_km;
+	private double porcentaje_extra;
+	private double costo_fjo_provincia;
 	
 	public ParametrosCostos(double precio_km,double porcentaje_extra,double costo_fijo_provincia) {
 		

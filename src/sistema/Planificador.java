@@ -4,6 +4,13 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import herramientas.CalculadorCostos;
+import herramientas.GeneradorConexiones;
+import modelos.Conexion;
+import modelos.Localidad;
+import modelos.ParametrosCostos;
+
 import java.util.ArrayList;
 
 public class Planificador {

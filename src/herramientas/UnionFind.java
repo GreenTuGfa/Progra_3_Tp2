@@ -1,7 +1,9 @@
-package sistema;
+package herramientas;
 
 import java.util.List;
 import java.util.Map;
+
+import modelos.Localidad;
 
 /**
  * 	La clase esta implementada a partir de un Map que almacena las componentes conexas, y no a partir de un Array,
