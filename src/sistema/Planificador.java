@@ -24,6 +24,11 @@ public class Planificador {
 	}
 	
 	public void agregarLocalidad(Localidad loc) {
+		
+		for(Localidad l : localidades) {
+			if(l.hashCode()==(loc.hashCode()))
+				throw new RuntimeException("Localidad ya registrada");
+		}
 		localidades.add(loc);
 	}
 	

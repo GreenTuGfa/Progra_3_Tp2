@@ -14,10 +14,11 @@ public class Main {
 	public static void main(String[] args) {
 		
 		List<Localidad>localidades = List.of(
-				new Localidad("a","",0,0), 
-                new Localidad("b","",0,0), 
-                new Localidad("c","",0,0),
-                new Localidad("d","",0,0)
+				new Localidad("San Miguel","BsAs",0,0,1), 
+                new Localidad("Villa Carlos Paz","Cordoba",0,0,1), 
+                new Localidad("Bariloche","Rio Negro",0,0,1),
+                new Localidad("San Justo","BsAs",0,0,1),
+                new Localidad("San Justo","BsAs",0,0,1)
 				);
 		
 		ParametrosCostos param = new ParametrosCostos(1000, 0, 0);
