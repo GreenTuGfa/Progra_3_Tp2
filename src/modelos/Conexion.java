@@ -1,6 +1,6 @@
 package modelos;
 
-public class Conexion {
+public class Conexion implements Comparable<Conexion>{
 
 	Localidad origen;
 	Localidad destino;
@@ -27,5 +27,11 @@ public class Conexion {
 	public String toString() {
 		
 		return "Desde: " + this.origen + ". Hasta: " + this.destino + ". Coste: " + this.costo;
+	}
+
+	@Override
+	public int compareTo(Conexion c) {
+		
+		return Double.compare(this.costo, c.costo); //Devuelve el mas chico
 	}
 }
