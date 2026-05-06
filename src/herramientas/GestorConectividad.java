@@ -1,5 +1,6 @@
 package herramientas;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +18,8 @@ public class GestorConectividad {
 	private Map<Localidad,Localidad> padre;
 	
 	public GestorConectividad(List<Localidad> localidades) {
+		
+		padre = new HashMap<>();
 		
         for (Localidad l : localidades) {
             padre.put(l, l); //Al inicializarse cada localidad se "representa" a si misma

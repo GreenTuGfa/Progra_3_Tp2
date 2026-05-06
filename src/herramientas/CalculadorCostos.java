@@ -20,7 +20,7 @@ public class CalculadorCostos {
 			costo += param.getCosto_fjo_provincia(); 
 		}
 		if(distancia > 300) {
-			costo += costo*param.getPorcentaje_extra();
+			costo += costo * (param.getPorcentaje_extra() / 100);
 		}
 		return costo;
 	}
