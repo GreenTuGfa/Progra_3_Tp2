@@ -46,6 +46,15 @@ public class VentanaPrincipal extends JFrame {
         panelIzquierdo.add(panelLocalidades);
         panelIzquierdo.add(Box.createVerticalGlue());
         
+        JButton btnPlanificar = new JButton("Planificar");
+        btnPlanificar.setMaximumSize(new Dimension(300, 40));
+        btnPlanificar.setPreferredSize(new Dimension(200, 40));
+        btnPlanificar.setAlignmentX(Component.RIGHT_ALIGNMENT);
+        btnPlanificar.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+        btnPlanificar.addActionListener(e -> ejecutarPlanificacion());
+        
+        panelIzquierdo.add(btnPlanificar);
+        
         JSplitPane split = new JSplitPane(
                 JSplitPane.VERTICAL_SPLIT,
                 panelMapa,
@@ -56,13 +65,9 @@ public class VentanaPrincipal extends JFrame {
         split.setDividerLocation(0.4);
         split.setOneTouchExpandable(true);
         split.setDividerSize(5);
-        
-        JButton btnPlanificar = new JButton("Planificar");
-        btnPlanificar.addActionListener(e -> ejecutarPlanificacion());
 
         getContentPane().add(panelIzquierdo, BorderLayout.WEST);
         getContentPane().add(split, BorderLayout.CENTER);
-        getContentPane().add(btnPlanificar, BorderLayout.SOUTH);
         
         setLocationRelativeTo(null);
         setVisible(true);

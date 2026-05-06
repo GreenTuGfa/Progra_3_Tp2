@@ -23,7 +23,7 @@ public class PanelResultado extends JPanel {
 
         for (Conexion c : red) {
             area.append(
-                c.getOrigen() + " <-> " + c.getDestino() +
+                c.getOrigen() + " -> " + c.getDestino() +
                 " | $" + String.format("%.2f", c.getCosto()) + "\n"
             );
         }
