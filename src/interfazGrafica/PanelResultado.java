@@ -12,7 +12,6 @@ public class PanelResultado extends JPanel {
     public PanelResultado() {
 
         setLayout(new java.awt.BorderLayout());
-
         area = new JTextArea();
         add(new JScrollPane(area), java.awt.BorderLayout.CENTER);
     }
@@ -23,8 +22,8 @@ public class PanelResultado extends JPanel {
 
         for (Conexion c : red) {
             area.append(
-                c.getOrigen() + " -> " + c.getDestino() +
-                " | $" + String.format("%.2f", c.getCosto()) + "\n"
+                "De " + c.getOrigen() + " a " + c.getDestino() +
+                " = $" + String.format("%.2f", c.getCosto()) + "\n"
             );
         }
 
