@@ -1,6 +1,8 @@
 package interfazGrafica;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
+
 import java.awt.*;
 
 import modelos.ParametrosCostos;
@@ -11,6 +13,7 @@ public class PanelParametros extends JPanel {
 
     public PanelParametros() {
 
+    	estilizarContenedor(this,"Parametros");
 
     	setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     	setPreferredSize(new Dimension(250, 200));
@@ -18,34 +21,34 @@ public class PanelParametros extends JPanel {
     	add(Box.createVerticalStrut(20));
 
     	JLabel l1 = new JLabel("Costo por km");
+        l1.setForeground(Color.WHITE);
     	l1.setAlignmentX(Component.CENTER_ALIGNMENT);
     	add(l1);
 
     	precioKm = new JTextField(10);
-    	precioKm.setMaximumSize(new Dimension(150, 25));
-    	precioKm.setAlignmentX(Component.CENTER_ALIGNMENT);
+    	estilizarEntradaDatos(precioKm);
     	add(precioKm);
 
     	add(Box.createVerticalStrut(20));
 
     	JLabel l2 = new JLabel("% aumento (>300km)");
+        l2.setForeground(Color.WHITE);
     	l2.setAlignmentX(Component.CENTER_ALIGNMENT);
     	add(l2);
 
     	porcentaje = new JTextField(10);
-    	porcentaje.setMaximumSize(new Dimension(150, 25));
-    	porcentaje.setAlignmentX(Component.CENTER_ALIGNMENT);
+    	estilizarEntradaDatos(porcentaje);
     	add(porcentaje);
 
     	add(Box.createVerticalStrut(20));
 
     	JLabel l3 = new JLabel("Costo fijo provincia");
+        l3.setForeground(Color.WHITE);
     	l3.setAlignmentX(Component.CENTER_ALIGNMENT);
     	add(l3);
 
     	costoFijo = new JTextField(10);
-    	costoFijo.setMaximumSize(new Dimension(150, 25));
-    	costoFijo.setAlignmentX(Component.CENTER_ALIGNMENT);
+    	estilizarEntradaDatos(costoFijo);
     	add(costoFijo);
     }
 
@@ -56,5 +59,30 @@ public class PanelParametros extends JPanel {
                 Double.parseDouble(porcentaje.getText()),
                 Double.parseDouble(costoFijo.getText())
         );
+    }
+    
+    public void estilizarEntradaDatos(JTextField campoTexto) {
+        campoTexto.setFont(new Font("Arial", Font.PLAIN, 14));
+        campoTexto.setBackground(new Color(45, 45, 45));
+        campoTexto.setForeground(Color.WHITE);
+        campoTexto.setAlignmentX(Component.CENTER_ALIGNMENT); 
+        
+        Dimension dim = new Dimension(150, 25);
+        campoTexto.setPreferredSize(dim);
+        campoTexto.setMaximumSize(dim); 
+        
+        campoTexto.setBorder(BorderFactory.createLineBorder(new Color(70, 70, 70)));
+    }
+    
+    public void estilizarContenedor(JPanel panel, String titulo) {
+        panel.setBackground(new Color(30, 30, 30));
+        panel.setBorder(BorderFactory.createTitledBorder(
+            BorderFactory.createLineBorder(new Color(60, 60, 60)), 
+            titulo, 
+            TitledBorder.LEFT, 
+            TitledBorder.TOP, 
+            new Font("Arial", Font.BOLD, 12), 
+            Color.GRAY
+        ));
     }
 }
