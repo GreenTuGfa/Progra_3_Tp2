@@ -13,10 +13,14 @@ class CalculadorDistanciaTest {
 	//jose c paz -34.514508989972214, -58.7629162912831
 	//polvorines -34.49951436427241, -58.690818517755
 	//tigre      -34.4267663319639, -58.57717868796918
-	
+	private static final Localidad JOSECPAZ = new Localidad("Jose C Paz", "Buenos Aires", -34.51394320352423,-58.76943963087526);
+	private static final Localidad POLVORINES = new Localidad("Polvorines", "Buenos Aires",-34.49929991316347, -58.69336057451757);
+	private static final Localidad TIGRE = new Localidad("Tigre","Buenos Aires",-34.4267663319639,-58.57717868796918);
+
+
 	@Test
 	void distanciaMismaLocalidad() {
-		Localidad jcp = new Localidad("Jose C Paz", "Buenos Aires",-34.51394320352423,-58.76943963087526);
+		Localidad jcp = JOSECPAZ;
 		CalculadorDistancia calcDis = new CalculadorDistancia();
 		
 		double distancia = calcDis.calcular(jcp, jcp);
@@ -24,8 +28,7 @@ class CalculadorDistanciaTest {
 	}
 	@Test
 	void distanciaEsSimetrica() {
-		Localidad jcp = new Localidad("Jose C Paz", "Buenos Aires",-34.51394320352423,-58.76943963087526);
-		Localidad pol = new Localidad("Polvorines", "Buenos Aires",-34.49929991316347, -58.69336057451757);
+		Localidad jcp = JOSECPAZ; Localidad pol = POLVORINES;
 		CalculadorDistancia calcDis = new CalculadorDistancia();
 		
 		double distancia1 = calcDis.calcular(jcp, pol);
@@ -37,10 +40,7 @@ class CalculadorDistanciaTest {
 	
 	@Test
 	void distanciaMayor() {
-		
-		Localidad jcp = new Localidad("Jose C Paz", "Buenos Aires",-34.514508989972214,-58.7629162912831);
-		Localidad pol = new Localidad("Polvorines", "Buenos Aires",-34.49951436427241, -58.690818517755);
-		Localidad tig = new Localidad("Tigre","Buenos Aires",-34.4267663319639,-58.57717868796918);
+		Localidad jcp = JOSECPAZ; Localidad pol = POLVORINES; Localidad tig = TIGRE;
 		CalculadorDistancia calcDis = new CalculadorDistancia();
 		
 		double distancia_jcp_pol = calcDis.calcular(pol, tig);
@@ -62,8 +62,7 @@ class CalculadorDistanciaTest {
 	
 	@Test
 	void distanciaDosLocalidades() {
-		Localidad jcp = new Localidad("Jose C Paz", "Buenos Aires",-34.51394320352423,-58.76943963087526);
-		Localidad pol = new Localidad("Polvorines", "Buenos Aires",-34.49929991316347, -58.69336057451757);
+		Localidad jcp = JOSECPAZ; Localidad pol = POLVORINES;
 		CalculadorDistancia calcDis = new CalculadorDistancia();
 		
 		double distancia = calcDis.calcular(jcp, pol);

@@ -68,13 +68,15 @@ class PlanificadorTest {
 
     @Test
     void costoTotalDeLocalidades1(){
-
+        Planificador planificador= localidades1();
+        ParametrosCostos parametrosCostos = new ParametrosCostos(15, 8,10);
+        assertEquals(26.731,17,planificador.costoTotal(planificador.planificar(parametrosCostos)));
     }
 
     @Test
     void costoTotalDeUnaCiudadConSigoMisma() {
         Planificador planificador= localidades2();
-        ParametrosCostos parametrosCostos = new ParametrosCostos(1, 1,1);
+        ParametrosCostos parametrosCostos = new ParametrosCostos(15, 8,10);
         assertEquals(0,planificador.costoTotal(planificador.planificar(parametrosCostos)));
     }
 

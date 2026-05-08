@@ -5,23 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a53a25f-4760-4ffa-b129-86d66fd6cfb6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/test/testModelos/ConexionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/testModelos/LocalidadTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/testModelos/ParametrosCostosTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/testSistema/PlanificadorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/testHerramientas/GestorConectividadTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Progra_3_Tp2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Progra_3_Tp2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/sistema/Planificador.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/sistema/Planificador.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/CalculadorCostoTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/CalculadorDistanciaTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/GeneradorConexionesTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/GeneradorRedMinimaTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sistema/Planificador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sistema/Planificador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/CalculadorCostoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/testHerramientas/CalculadorCostoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/CalculadorDistanciaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/testHerramientas/CalculadorDistanciaTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/GeneradorConexionesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/testHerramientas/GeneradorConexionesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/GeneradorRedMinimaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/testHerramientas/GeneradorRedMinimaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/testSistema/PlanificadorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/testSistema/PlanificadorTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/testHerramientas/CalculadorDistanciaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/testHerramientas/CalculadorDistanciaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/testModelos/ConexionTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/testModelos/LocalidadTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/testModelos/ParametrosCostosTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/testSistema/PlanificadorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/testSistema/PlanificadorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +57,7 @@
     "JUnit.All in Progra_3_Tp2.executor": "Run",
     "JUnit.CalculadorCostoTest.executor": "Run",
     "JUnit.PlanificadorTest.agregarLocalidad.executor": "Debug",
+    "JUnit.PlanificadorTest.costoTotalDeLocalidades1.executor": "Run",
     "JUnit.PlanificadorTest.costoTotalDeUnaCiudadConSigoMisma.executor": "Run",
     "JUnit.PlanificadorTest.eliminarLocalidad.executor": "Run",
     "JUnit.PlanificadorTest.planificarASiMismo.executor": "Run",
@@ -93,20 +85,26 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="herramientas" />
       <recent name="testModelos" />
       <recent name="testSistema" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PlanificadorTest.planificarASiMismo">
-    <configuration name="All in Progra_3_Tp2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.PlanificadorTest.costoTotalDeLocalidades1">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="Progra_3_Tp2" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlanificadorTest.agregarLocalidad" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PlanificadorTest.costoTotalDeLocalidades1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Progra_3_Tp2" />
       <extension name="coverage">
         <pattern>
@@ -116,7 +114,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="testSistema" />
       <option name="MAIN_CLASS_NAME" value="testSistema.PlanificadorTest" />
-      <option name="METHOD_NAME" value="agregarLocalidad" />
+      <option name="METHOD_NAME" value="costoTotalDeLocalidades1" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -172,11 +170,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PlanificadorTest.planificarASiMismo" />
+        <item itemvalue="JUnit.PlanificadorTest.costoTotalDeLocalidades1" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.PlanificadorTest.costoTotalDeUnaCiudadConSigoMisma" />
+        <item itemvalue="JUnit.PlanificadorTest.planificarASiMismo" />
         <item itemvalue="JUnit.PlanificadorTest.eliminarLocalidad" />
-        <item itemvalue="JUnit.PlanificadorTest.agregarLocalidad" />
-        <item itemvalue="JUnit.All in Progra_3_Tp2" />
       </list>
     </recent_temporary>
   </component>
@@ -196,5 +194,16 @@
       <updated>1778207492385</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/herramientas/CalculadorCostos.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
