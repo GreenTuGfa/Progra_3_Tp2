@@ -1,4 +1,4 @@
-package test;
+package testHerramientas;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,7 +12,6 @@ import herramientas.GeneradorConexiones;
 import modelos.Conexion;
 import modelos.Localidad;
 import modelos.ParametrosCostos;
-import sistema.*;
 
 class GeneradorConexionesTest {
 	

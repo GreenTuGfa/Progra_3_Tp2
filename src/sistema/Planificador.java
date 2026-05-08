@@ -23,7 +23,7 @@ public class Planificador {
 		this.localidades = new ArrayList<>();
 		this.generador = new GeneradorConexiones(calculador);
 	}
-	
+
 	public void agregarLocalidad(Localidad loc) {
 		localidades.add(loc);
 	}
@@ -43,6 +43,10 @@ public class Planificador {
 
 	public void eliminarLocalidad(Localidad loc) {
 		this.localidades.remove(loc);
+	}
+
+	public List<Localidad> localidades(){
+		return localidades;
 	}
 
 }

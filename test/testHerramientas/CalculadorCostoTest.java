@@ -1,4 +1,4 @@
-package test;
+package testHerramientas;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import herramientas.CalculadorCostos;
 import modelos.Localidad;
 import modelos.ParametrosCostos;
-import sistema.*;
 
 class CalculadorCostoTest {
 
@@ -36,6 +35,6 @@ class CalculadorCostoTest {
 		
 		assertEquals(costo1,costo2);
 	}
-	
+
 
 }
