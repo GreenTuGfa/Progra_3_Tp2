@@ -1,7 +1,6 @@
 package herramientas;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 import modelos.Conexion;
@@ -11,8 +10,8 @@ public class GeneradorRedMinima { //IMplementa el AGM
 
 	public List<Conexion> generar(List<Localidad> localidades, List<Conexion> conexiones) {
 
-        //Ordena por costo
-        conexiones.sort(Comparator.comparingDouble(Conexion::getCosto));
+        //Ordena por costo, usando el compreTo de la clase Conexion
+        conexiones.sort(null); 
 
         GestorConectividad gf = new GestorConectividad(localidades); //Union-Find
 
