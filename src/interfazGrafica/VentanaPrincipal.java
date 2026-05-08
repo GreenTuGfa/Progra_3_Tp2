@@ -38,6 +38,7 @@ public class VentanaPrincipal extends JFrame {
         panelMapa = new PanelMapa();
         
         JPanel panelIzquierdo = new JPanel();
+        panelLocalidades.estilizarContenedor(panelIzquierdo, "");
         panelIzquierdo.setLayout(new BoxLayout(panelIzquierdo, BoxLayout.Y_AXIS));
         panelIzquierdo.setPreferredSize(new Dimension(300, 700));
 
@@ -47,11 +48,20 @@ public class VentanaPrincipal extends JFrame {
         panelIzquierdo.add(Box.createVerticalGlue());
         
         JButton btnPlanificar = new JButton("Planificar");
+        
         btnPlanificar.setMaximumSize(new Dimension(300, 40));
         btnPlanificar.setPreferredSize(new Dimension(200, 40));
         btnPlanificar.setAlignmentX(Component.RIGHT_ALIGNMENT);
         btnPlanificar.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+        btnPlanificar.setBackground(new Color(83, 141, 78));
+        btnPlanificar.setForeground(Color.WHITE);
+        btnPlanificar.setFont(new Font("Arial", Font.BOLD, 16));
+        btnPlanificar.setFocusPainted(false);
+        btnPlanificar.setBorder(BorderFactory.createLineBorder(new Color(60, 100, 55), 2));
+        btnPlanificar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnPlanificar.setContentAreaFilled(true); //saca la forma feita de windows
         btnPlanificar.addActionListener(e -> ejecutarPlanificacion());
+        
         
         panelIzquierdo.add(btnPlanificar);
         

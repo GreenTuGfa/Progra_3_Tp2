@@ -16,6 +16,7 @@ public class PanelMapa extends JPanel {
     public PanelMapa() {
         setLayout(new BorderLayout());
         mapa = new JMapViewer();
+        
         add(mapa, BorderLayout.CENTER);
     }
 
