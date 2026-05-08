@@ -6,12 +6,10 @@ public class Localidad {
 
 	String nombre;
 	String provincia;
-	int id;
 	double latitud;
 	double longitud;
 	
-	public Localidad(String nombre, String provincia, double latitud, double longitud, int id) {
-		this.id=id;
+	public Localidad(String nombre, String provincia, double latitud, double longitud) {
 		this.nombre = nombre;
 		this.provincia = provincia;
 		this.latitud = latitud;
@@ -35,14 +33,5 @@ public class Localidad {
 	
 	public boolean equals(Localidad localidad) {
 		return this==localidad;
-	}
-	
-	public int hashCode() {
-		return id;
-	}
-
-	public Coordinate darCoordenada() {
-		Coordinate coordenada= new Coordinate(latitud,longitud);
-		return coordenada;
 	}
 }
