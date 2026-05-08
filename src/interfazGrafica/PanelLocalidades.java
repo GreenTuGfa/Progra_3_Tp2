@@ -179,6 +179,7 @@ public class PanelLocalidades extends JPanel {
             return;
         }
         modelo.removeElement(seleccionada);
+        planificador.eliminarLocalidad(seleccionada);
     }
 
 	private void agregar() {

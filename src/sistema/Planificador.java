@@ -41,4 +41,8 @@ public class Planificador {
         return agm.stream().mapToDouble(Conexion::getCosto).sum();
 	}
 
+	public void eliminarLocalidad(Localidad loc) {
+		this.localidades.remove(loc);
+	}
+
 }
