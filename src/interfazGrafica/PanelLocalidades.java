@@ -29,7 +29,6 @@ public class PanelLocalidades extends JPanel {
         this.planificador = planificador;
         estilizarContenedor(this,"Registro de Localidades");
         
-
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setPreferredSize(new Dimension(250, 600));
         
@@ -39,8 +38,7 @@ public class PanelLocalidades extends JPanel {
         add(verticalStrut_1);
 
         JLabel l1 = new JLabel("Nombre");
-        l1.setForeground(Color.WHITE);
-        l1.setAlignmentX(Component.CENTER_ALIGNMENT);
+        estilizarJLabel(l1);
         add(l1);
 
         nombre = new JTextField(10);
@@ -51,8 +49,7 @@ public class PanelLocalidades extends JPanel {
         add(verticalStrut);
 
         JLabel l2 = new JLabel("Provincia");
-        l2.setForeground(Color.WHITE);
-        l2.setAlignmentX(Component.CENTER_ALIGNMENT);
+        estilizarJLabel(l2);
         add(l2);
 
         provincia = new JTextField(10);
@@ -63,8 +60,7 @@ public class PanelLocalidades extends JPanel {
         add(verticalStrut_2);
 
         JLabel l3 = new JLabel("Latitud");
-        l3.setForeground(Color.WHITE);
-        l3.setAlignmentX(Component.CENTER_ALIGNMENT);
+        estilizarJLabel(l3);
         add(l3);
 
         latitud = new JTextField(10);
@@ -75,8 +71,7 @@ public class PanelLocalidades extends JPanel {
         add(verticalStrut_3);
 
         JLabel l4 = new JLabel("Longitud");
-        l4.setForeground(Color.WHITE);
-        l4.setAlignmentX(Component.CENTER_ALIGNMENT);
+        estilizarJLabel(l4);
         add(l4);
 
         longitud = new JTextField(10);
@@ -85,7 +80,8 @@ public class PanelLocalidades extends JPanel {
 
         Component verticalStrut_4 = Box.createVerticalStrut(20);
         add(verticalStrut_4);
-
+        
+        //agregar botones
         JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 5)); 
         panelBotones.setBackground(new Color(30, 30, 30));
         panelBotones.setOpaque(true);
@@ -116,18 +112,6 @@ public class PanelLocalidades extends JPanel {
         lista = new JList<>(modelo);
         
         JScrollPane scroll = new JScrollPane(lista);
-        
-        lista.setBackground(new Color(25, 25, 25)); 
-        lista.setForeground(Color.WHITE);          
-        lista.setSelectionBackground(new Color(83, 141, 78));
-        lista.setSelectionForeground(Color.WHITE);
-        lista.setBorder(BorderFactory.createEmptyBorder());
-
-        scroll.setBorder(BorderFactory.createLineBorder(new Color(60, 60, 60)));
-        scroll.getViewport().setBackground(new Color(25, 25, 25));
-        
-        scroll.setAlignmentX(Component.CENTER_ALIGNMENT);
-        scroll.setPreferredSize(new Dimension(200, 200));
         add(scroll);
         
     }
@@ -190,13 +174,12 @@ public class PanelLocalidades extends JPanel {
 	    List<Localidad> listaCapitales = cargarCapitalesDesdeJSON();
 
 	    // Si esto imprime "DEBUG: Lista vacía", el problema es el archivo capitales.json
-	    if (listaCapitales == null || listaCapitales.isEmpty()) {
-	        System.out.println("DEBUG: Lista vacía o archivo no encontrado");
+	    if (listaCapitales == null || listaCapitales.isEmpty())
 	        return;
-	    }
-
-	    JLabel etiquetaAtajo = new JLabel("Cargar Capital (Atajo)");
-	    etiquetaAtajo.setForeground(Color.WHITE); // Fundamental para tu fondo oscuro
+	    
+	    //
+	    JLabel etiquetaAtajo = new JLabel("Cargar Capitales Arg");
+	    etiquetaAtajo.setForeground(Color.WHITE);
 	    etiquetaAtajo.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    this.add(etiquetaAtajo);
 
@@ -299,5 +282,24 @@ public class PanelLocalidades extends JPanel {
             boton.setBackground(new Color(70, 70, 70));
             boton.setBorder(BorderFactory.createLineBorder(new Color(50, 50, 50), 1));
         }
+    }
+    
+    public void estilizarScroll(JScrollPane scroll) {
+        lista.setBackground(new Color(25, 25, 25)); 
+        lista.setForeground(Color.WHITE);          
+        lista.setSelectionBackground(new Color(83, 141, 78));
+        lista.setSelectionForeground(Color.WHITE);
+        lista.setBorder(BorderFactory.createEmptyBorder());
+
+        scroll.setBorder(BorderFactory.createLineBorder(new Color(60, 60, 60)));
+        scroll.getViewport().setBackground(new Color(25, 25, 25));
+        
+        scroll.setAlignmentX(Component.CENTER_ALIGNMENT);
+        scroll.setPreferredSize(new Dimension(200, 200));
+    }
+    
+    public void estilizarJLabel(JLabel label) {
+    	label.setForeground(Color.WHITE);
+    	label.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
 }
