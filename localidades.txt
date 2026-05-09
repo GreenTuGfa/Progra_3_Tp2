@@ -16,5 +16,11 @@
     "provincia": "Tierra del Fuego",
     "latitud": -54.801,
     "longitud": -68.303
+  },
+  {
+    "nombre": "Salta",
+    "provincia": "Salta",
+    "latitud": -24.785,
+    "longitud": -65.411
   }
 ]

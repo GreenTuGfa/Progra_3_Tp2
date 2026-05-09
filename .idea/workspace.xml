@@ -5,14 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a53a25f-4760-4ffa-b129-86d66fd6cfb6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/test/testHerramientas/GestorConectividadTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_11_0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/testSistema/PlanificadorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/testSistema/PlanificadorTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/testHerramientas/CalculadorDistanciaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/testHerramientas/CalculadorDistanciaTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/testModelos/ConexionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/testModelos/LocalidadTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/testModelos/ParametrosCostosTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/testSistema/PlanificadorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/testSistema/PlanificadorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Progra_3_Tp2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Progra_3_Tp2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/herramientas/CalculadorCostos.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/herramientas/CalculadorCostos.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/herramientas/CalculadorDistancia.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/herramientas/CalculadorDistancia.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/herramientas/GeneradorConexiones.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/herramientas/GeneradorConexiones.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/herramientas/GeneradorRedMinima.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/herramientas/GeneradorRedMinima.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/herramientas/GestorConectividad.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/herramientas/GestorConectividad.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/interfazGrafica/PanelLocalidades.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/interfazGrafica/PanelLocalidades.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/interfazGrafica/PanelMapa.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/interfazGrafica/PanelMapa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/interfazGrafica/PanelParametros.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/interfazGrafica/PanelParametros.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/interfazGrafica/PanelResultado.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/interfazGrafica/PanelResultado.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/interfazGrafica/VentanaPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/interfazGrafica/VentanaPrincipal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/modelos/Conexion.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/modelos/Conexion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/modelos/Localidad.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/modelos/Localidad.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/modelos/ParametrosCostos.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/modelos/ParametrosCostos.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/sistema/Planificador$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/sistema/Planificador$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/sistema/Planificador.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/sistema/Planificador.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/localidades.txt" beforeDir="false" afterPath="$PROJECT_DIR$/localidades.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/testHerramientas/GestorConectividadTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/testHerramientas/GestorConectividadTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +69,8 @@
     "Downloaded.Files.Path.Enabled": "false",
     "JUnit.All in Progra_3_Tp2.executor": "Run",
     "JUnit.CalculadorCostoTest.executor": "Run",
+    "JUnit.GestorConectividadTest.executor": "Run",
+    "JUnit.GestorConectividadTest.testInicializacion.executor": "Run",
     "JUnit.PlanificadorTest.agregarLocalidad.executor": "Debug",
     "JUnit.PlanificadorTest.costoTotalDeLocalidades1.executor": "Run",
     "JUnit.PlanificadorTest.costoTotalDeUnaCiudadConSigoMisma.executor": "Run",
@@ -67,11 +82,12 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.lookFeel"
@@ -90,7 +106,7 @@
       <recent name="testSistema" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PlanificadorTest.costoTotalDeLocalidades1">
+  <component name="RunManager" selected="JUnit.GestorConectividadTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="Progra_3_Tp2" />
@@ -100,6 +116,37 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GestorConectividadTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Progra_3_Tp2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="testHerramientas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="testHerramientas" />
+      <option name="MAIN_CLASS_NAME" value="testHerramientas.GestorConectividadTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GestorConectividadTest.testInicializacion" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Progra_3_Tp2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="testHerramientas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="testHerramientas" />
+      <option name="MAIN_CLASS_NAME" value="testHerramientas.GestorConectividadTest" />
+      <option name="METHOD_NAME" value="testInicializacion" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -136,45 +183,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlanificadorTest.eliminarLocalidad" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Progra_3_Tp2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="testSistema.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="testSistema" />
-      <option name="MAIN_CLASS_NAME" value="testSistema.PlanificadorTest" />
-      <option name="METHOD_NAME" value="eliminarLocalidad" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PlanificadorTest.planificarASiMismo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Progra_3_Tp2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="testSistema.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="testSistema" />
-      <option name="MAIN_CLASS_NAME" value="testSistema.PlanificadorTest" />
-      <option name="METHOD_NAME" value="planificarASiMismo" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PlanificadorTest.costoTotalDeLocalidades1" />
+        <item itemvalue="JUnit.GestorConectividadTest" />
+        <item itemvalue="JUnit.GestorConectividadTest.testInicializacion" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.PlanificadorTest.costoTotalDeLocalidades1" />
         <item itemvalue="JUnit.PlanificadorTest.costoTotalDeUnaCiudadConSigoMisma" />
-        <item itemvalue="JUnit.PlanificadorTest.planificarASiMismo" />
-        <item itemvalue="JUnit.PlanificadorTest.eliminarLocalidad" />
       </list>
     </recent_temporary>
   </component>
