@@ -5,27 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a53a25f-4760-4ffa-b129-86d66fd6cfb6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_11_0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Progra_3_Tp2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Progra_3_Tp2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/herramientas/CalculadorCostos.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/herramientas/CalculadorCostos.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/herramientas/CalculadorDistancia.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/herramientas/CalculadorDistancia.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/herramientas/GeneradorConexiones.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/herramientas/GeneradorConexiones.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/herramientas/GeneradorRedMinima.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/herramientas/GeneradorRedMinima.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/herramientas/GestorConectividad.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/herramientas/GestorConectividad.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/interfazGrafica/PanelLocalidades.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/interfazGrafica/PanelLocalidades.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/interfazGrafica/PanelMapa.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/interfazGrafica/PanelMapa.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/interfazGrafica/PanelParametros.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/interfazGrafica/PanelParametros.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/interfazGrafica/PanelResultado.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/interfazGrafica/PanelResultado.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/interfazGrafica/VentanaPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/interfazGrafica/VentanaPrincipal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/modelos/Conexion.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/modelos/Conexion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/modelos/Localidad.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/modelos/Localidad.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/modelos/ParametrosCostos.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/modelos/ParametrosCostos.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/sistema/Planificador$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/sistema/Planificador$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/sistema/Planificador.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/sistema/Planificador.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/localidades.txt" beforeDir="false" afterPath="$PROJECT_DIR$/localidades.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/testHerramientas/GestorConectividadTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/testHerramientas/GestorConectividadTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
