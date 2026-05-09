@@ -12,7 +12,9 @@ public class CalculadorCostos {
 	}
 	
 	public double calcular(Localidad a, Localidad b,ParametrosCostos param) {
-		
+		if(param==null)
+			return 0;
+			
 		double distancia = calc.calcular(a, b);
 		double costo = distancia*param.getPrecio_km();
 		

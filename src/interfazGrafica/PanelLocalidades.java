@@ -183,21 +183,51 @@ public class PanelLocalidades extends JPanel {
     }
 
 	private void agregar() {
-        try {
-            Localidad l = new Localidad(
-                    nombre.getText(),
-                    provincia.getText(),
-                    Double.parseDouble(lat.getText()),
-                    Double.parseDouble(lon.getText())
-            );
+		/*Para mandar distintos msj de error al usuario, dependemos de almacenar los datos de cada JTextField 
+		para comparar. Con trim() unimos los string para comparar de forma exacta,sin los espacios*/
+		
+		String nombreTexto = nombre.getText().trim();
+	    String provinciaTexto = provincia.getText().trim();
+	    String latTexto = lat.getText().trim();
+	    String lonTexto = lon.getText().trim();
 
-            planificador.agregarLocalidad(l);
-            modelo.addElement(l);
+	    // Validamos que no quede ningun campo vacio antes de agregarlo como dato
+	    if (nombreTexto.isEmpty() || provinciaTexto.isEmpty() || latTexto.isEmpty() || lonTexto.isEmpty()) {
+	        JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios.", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+	        return;
+	    }
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Datos inválidos");
-        }
-    }
+	    try {
+	        //convertimos las latitudes en su valor numerico
+	        double latitud = Double.parseDouble(latTexto);
+	        double longitud = Double.parseDouble(lonTexto);
+	        
+	        /*comparamos para hacer saltar excepcion cada que un rango este fuera del permitido por mundo ACTUAL 
+	        (no sabemos si cuando Elon Musk domine la luna el mapa se valla a ampliar)*/
+	        if (latitud < -90 || latitud > 90) {
+	            throw new IllegalArgumentException("La latitud debe estar entre -90 y 90.");
+	        }
+	        if (longitud < -180 || longitud > 180) {
+	            throw new IllegalArgumentException("La longitud debe estar entre -180 y 180.");
+	        }
+
+	        //con los datos a insertar ya verificados, agregamos finalmente la Localidad
+	        Localidad l = new Localidad(nombreTexto, provinciaTexto, latitud, longitud);
+	        planificador.agregarLocalidad(l);
+	        modelo.addElement(l);
+	        limpiarCampo();
+
+	    } catch (NumberFormatException e) {
+	        JOptionPane.showMessageDialog(this, "La latitud y longitud deben ser números válidos (ej: -34.51).", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+	    } catch (IllegalArgumentException e) {
+	        JOptionPane.showMessageDialog(this, e.getMessage(), "Error de Rango", JOptionPane.WARNING_MESSAGE);
+	    }
+	}
+	
+	//lo usamos para cargar los archivos almacenados del txt
+	public void actualizarModeloCarga(Localidad loc) {
+	    this.modelo.addElement(loc);
+	}
 
 	private void limpiarCampo() {
 	    nombre.setText("");
@@ -208,11 +238,11 @@ public class PanelLocalidades extends JPanel {
 	
     public List<Localidad> getLocalidades() {
 
-        List<Localidad> ListaLoc = new ArrayList<>();
+        List<Localidad> ListaLocalidades = new ArrayList<>();
 
         for (int i = 0; i < modelo.size(); i++) {
-            ListaLoc.add(modelo.getElementAt(i));
+        	ListaLocalidades.add(modelo.getElementAt(i));
         }
-         return ListaLoc;
+         return ListaLocalidades;
     }
 }

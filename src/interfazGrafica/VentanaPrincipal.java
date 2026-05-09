@@ -21,70 +21,93 @@ public class VentanaPrincipal extends JFrame {
     private PanelMapa panelMapa;
     
     public VentanaPrincipal() {
-
+        //Inicializar la lógica y CARGAR los datos antes que la interfaz
         planificador = new Planificador(new CalculadorCostos());
-        
+        planificador.cargarLocalidadesDesdeArchivo("localidades.txt"); 
+
+        //Configuración básica de la ventana
         setTitle("Planificador de Fibra Óptica");
         setSize(1000, 700);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        
+        
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); 	//Evita que el frame se cierre sin antes guardar el archivo
         getContentPane().setLayout(new BorderLayout());
 
+        //Inicializar Paneles
         panelLocalidades = new PanelLocalidades(planificador);
-        panelLocalidades.setAlignmentX(Component.RIGHT_ALIGNMENT);
-        panelLocalidades.setAlignmentY(Component.BOTTOM_ALIGNMENT);
         panelParametros = new PanelParametros();
-        panelParametros.setAlignmentX(Component.RIGHT_ALIGNMENT);
         panelResultado = new PanelResultado();
         panelMapa = new PanelMapa();
-        
-        JPanel panelIzquierdo = new JPanel();
-        panelLocalidades.estilizarContenedor(panelIzquierdo, "");
-        panelIzquierdo.setLayout(new BoxLayout(panelIzquierdo, BoxLayout.Y_AXIS));
-        panelIzquierdo.setPreferredSize(new Dimension(300, 700));
 
-        panelIzquierdo.add(panelParametros);
-        panelIzquierdo.add(Box.createVerticalStrut(40));
-        panelIzquierdo.add(panelLocalidades);
-        panelIzquierdo.add(Box.createVerticalGlue());
+        //Recorremos las localidades cargadas del archivo y las metemos en el modelo del panel
+        for (Localidad loc : planificador.localidades()) {
+            panelLocalidades.actualizarModeloCarga(loc);
+        }
+
+        panelLocalidades.setAlignmentX(Component.RIGHT_ALIGNMENT);
+        panelLocalidades.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+        panelParametros.setAlignmentX(Component.RIGHT_ALIGNMENT);
+        															
+        JPanel panelIzquierdo = new JPanel();
+        darFormatoPanel(panelIzquierdo);
         
         JButton btnPlanificar = new JButton("Planificar");
+        darFormatoBtnPlanificar(btnPlanificar);
         
-        btnPlanificar.setMaximumSize(new Dimension(300, 40));
+        panelIzquierdo.add(btnPlanificar);
+        
+        JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT, panelMapa, panelResultado);
+        darFormatoSplit(split);
+
+        getContentPane().add(panelIzquierdo, BorderLayout.WEST);
+        getContentPane().add(split, BorderLayout.CENTER);
+        
+        setLocationRelativeTo(null);
+
+        //Cierra y guarda el archivo
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                planificador.guardarLocalidadesEnArchivo("localidades.txt");
+                System.exit(0); 
+            }
+        });
+
+        setVisible(true);
+    }
+    
+    public void darFormatoPanel(JPanel panel) {
+    	panelLocalidades.estilizarContenedor(panel, "");
+    	panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setPreferredSize(new Dimension(300, 700));
+
+        panel.add(panelParametros);
+        panel.add(Box.createVerticalStrut(40));
+        panel.add(panelLocalidades);
+        panel.add(Box.createVerticalGlue());
+    }
+    
+    public void darFormatoBtnPlanificar(JButton btnPlanificar) {
+    	btnPlanificar.setMaximumSize(new Dimension(300, 40));
         btnPlanificar.setPreferredSize(new Dimension(200, 40));
         btnPlanificar.setAlignmentX(Component.RIGHT_ALIGNMENT);
-        btnPlanificar.setAlignmentY(Component.BOTTOM_ALIGNMENT);
         btnPlanificar.setBackground(new Color(83, 141, 78));
         btnPlanificar.setForeground(Color.WHITE);
         btnPlanificar.setFont(new Font("Arial", Font.BOLD, 16));
         btnPlanificar.setFocusPainted(false);
         btnPlanificar.setBorder(BorderFactory.createLineBorder(new Color(60, 100, 55), 2));
         btnPlanificar.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btnPlanificar.setContentAreaFilled(true); //saca la forma feita de windows
         btnPlanificar.addActionListener(e -> ejecutarPlanificacion());
-        
-        
-        panelIzquierdo.add(btnPlanificar);
-        
-        JSplitPane split = new JSplitPane(
-                JSplitPane.VERTICAL_SPLIT,
-                panelMapa,
-                panelResultado
-        );
-
-        split.setResizeWeight(0.5);
+    }
+    
+	public void darFormatoSplit(JSplitPane split) {
+		split.setResizeWeight(0.5);
         split.setDividerLocation(0.4);
         split.setOneTouchExpandable(true);
         split.setDividerSize(5);
-
-        getContentPane().add(panelIzquierdo, BorderLayout.WEST);
-        getContentPane().add(split, BorderLayout.CENTER);
-        
-        setLocationRelativeTo(null);
-        setVisible(true);
-    }
+	}
 
     private void ejecutarPlanificacion() {
-
         try {
             ParametrosCostos param = panelParametros.getParametros();
 
@@ -94,8 +117,10 @@ public class VentanaPrincipal extends JFrame {
 
             PanelMapa.mostrar(panelLocalidades.getLocalidades(), red);
 
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Asegurate de que todos los parametros de costo de los numeros sean válidos.", "Error en Parámetros", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error en datos"); //da error cuando no estan completos los datos pedidos
+            JOptionPane.showMessageDialog(this, "Ocurrio un error al planificar :(");
         }
     }
 }
