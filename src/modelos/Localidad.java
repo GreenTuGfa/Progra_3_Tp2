@@ -29,4 +29,8 @@ public class Localidad {
 	public String toString() {
 		return this.nombre;
 	}
+
+	public String generarLineaArchivo() {
+	    return nombre + ";" + provincia + ";" + latitud + ";" + longitud;
+	}
 }

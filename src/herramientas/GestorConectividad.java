@@ -18,7 +18,6 @@ public class GestorConectividad {
 	private Map<Localidad,Localidad> padre;
 	
 	public GestorConectividad(List<Localidad> localidades) {
-		
 		padre = new HashMap<>();
 		
         for (Localidad l : localidades) {
@@ -32,6 +31,7 @@ public class GestorConectividad {
         }
         return padre.get(l);
     }
+	
 	public void union(Localidad a, Localidad b) {
         Localidad rootA = find(a);
         Localidad rootB = find(b);

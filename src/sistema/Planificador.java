@@ -1,9 +1,7 @@
 package sistema;
 
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Scanner;
 
 import herramientas.CalculadorCostos;
 import herramientas.GeneradorConexiones;
@@ -12,6 +10,11 @@ import modelos.Conexion;
 import modelos.Localidad;
 import modelos.ParametrosCostos;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class Planificador {
@@ -48,5 +51,50 @@ public class Planificador {
 	public List<Localidad> localidades(){
 		return localidades;
 	}
+	
+	
+	//METODOS PARA EL ALMACENAMIENTO DEL ARCHIVO 
+	
+	public void guardarLocalidadesEnArchivo(String rutaDestino) {
+	    try (FileOutputStream flujoSalida = new FileOutputStream(rutaDestino);
+	         OutputStreamWriter escritorTexto = new OutputStreamWriter(flujoSalida)) {
+	        
+	        for (Localidad localidadActual : localidades) {
+	        	escritorTexto.write(localidadActual.generarLineaArchivo() + "\r\n");
+	        }
+	        
+	    } catch (IOException error) {
+	        System.err.println("Error tecnico al intentar escribir el archivo: " + error.getMessage());
+	    }
+	}
+	public void cargarLocalidadesDesdeArchivo(String rutaOrigen) {
+	    File archivoReferenciado = new File(rutaOrigen);
+	    
+	    if (!archivoReferenciado.exists()) {
+	        return;
+	    }
 
+	    try (FileInputStream flujoEntradaArchivo = new FileInputStream(archivoReferenciado);
+	         Scanner lectorDeArchivo = new Scanner(flujoEntradaArchivo)) {
+	        
+	        while (lectorDeArchivo.hasNextLine()) {
+	            String lineaLeida = lectorDeArchivo.nextLine();
+	            String[] atributosDeLocalidad = lineaLeida.split(";");
+	            
+	            // Validamos que la línea tenga exactamente nombre, provincia, lat y lon
+	            if (atributosDeLocalidad.length == 4) {
+	                String nombre = atributosDeLocalidad[0];
+	                String provincia = atributosDeLocalidad[1];
+	                double latitud = Double.parseDouble(atributosDeLocalidad[2]);
+	                double longitud = Double.parseDouble(atributosDeLocalidad[3]);
+	                
+	                Localidad localidadCargada = new Localidad(nombre, provincia, latitud, longitud);
+	                this.agregarLocalidad(localidadCargada);
+	            }
+	        }
+	        
+	    } catch (Exception excepcionError) { 
+	        System.err.println("Error al intentar procesar la lectura del archivo: " + excepcionError.getMessage());
+	    }
+	}
 }
