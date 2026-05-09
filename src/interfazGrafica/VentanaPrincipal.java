@@ -23,7 +23,7 @@ public class VentanaPrincipal extends JFrame {
     public VentanaPrincipal() {
         //Inicializar la lógica y CARGAR los datos antes que la interfaz
         planificador = new Planificador(new CalculadorCostos());
-        planificador.cargarLocalidadesDesdeArchivo("localidades.txt"); 
+        planificador.cargarLocalidadesJSON("localidades.txt"); 
 
         //Configuración básica de la ventana
         setTitle("Planificador de Fibra Óptica");
@@ -68,7 +68,7 @@ public class VentanaPrincipal extends JFrame {
         this.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
-                planificador.guardarLocalidadesEnArchivo("localidades.txt");
+                planificador.guardarLocalidadesJSON("localidades.txt");
                 System.exit(0); 
             }
         });
@@ -76,6 +76,26 @@ public class VentanaPrincipal extends JFrame {
         setVisible(true);
     }
     
+    
+
+    private void ejecutarPlanificacion() {
+        try {
+            ParametrosCostos param = panelParametros.getParametros();
+
+            List<Conexion> red = planificador.planificar(param);
+
+            panelResultado.mostrar(red, planificador.costoTotal(red));
+
+            PanelMapa.mostrar(panelLocalidades.getLocalidades(), red);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Asegurate de que todos los parametros de costo de los numeros sean válidos.", "Error en Parámetros", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un error al planificar :(");
+        }
+    }
+    
+    //aplicar buen diseño
     public void darFormatoPanel(JPanel panel) {
     	panelLocalidades.estilizarContenedor(panel, "");
     	panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -106,21 +126,4 @@ public class VentanaPrincipal extends JFrame {
         split.setOneTouchExpandable(true);
         split.setDividerSize(5);
 	}
-
-    private void ejecutarPlanificacion() {
-        try {
-            ParametrosCostos param = panelParametros.getParametros();
-
-            List<Conexion> red = planificador.planificar(param);
-
-            panelResultado.mostrar(red, planificador.costoTotal(red));
-
-            PanelMapa.mostrar(panelLocalidades.getLocalidades(), red);
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Asegurate de que todos los parametros de costo de los numeros sean válidos.", "Error en Parámetros", JOptionPane.ERROR_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un error al planificar :(");
-        }
-    }
 }
