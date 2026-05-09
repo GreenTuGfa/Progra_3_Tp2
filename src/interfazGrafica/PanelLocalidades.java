@@ -4,8 +4,14 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
 import java.awt.*;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
 
 import modelos.Localidad;
 import sistema.Planificador;
@@ -15,15 +21,19 @@ public class PanelLocalidades extends JPanel {
     private Planificador planificador;
     private DefaultListModel<Localidad> modelo;
     private JList<Localidad> lista;
-    private JTextField nombre, provincia, lat, lon;
+    private JTextField nombre, provincia, latitud, longitud;
+	private JComboBox<Localidad> atajoCapitales;
 
     public PanelLocalidades(Planificador planificador) {
 
         this.planificador = planificador;
         estilizarContenedor(this,"Registro de Localidades");
         
+
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setPreferredSize(new Dimension(250, 600));
+        
+        inicializarAtajoCapitales();
 
         Component verticalStrut_1 = Box.createVerticalStrut(20);
         add(verticalStrut_1);
@@ -57,9 +67,9 @@ public class PanelLocalidades extends JPanel {
         l3.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(l3);
 
-        lat = new JTextField(10);
-        estilizarEntradaDatos(lat);
-        add(lat);
+        latitud = new JTextField(10);
+        estilizarEntradaDatos(latitud);
+        add(latitud);
 
         Component verticalStrut_3 = Box.createVerticalStrut(20);
         add(verticalStrut_3);
@@ -69,9 +79,9 @@ public class PanelLocalidades extends JPanel {
         l4.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(l4);
 
-        lon = new JTextField(10);
-        estilizarEntradaDatos(lon);
-        add(lon);
+        longitud = new JTextField(10);
+        estilizarEntradaDatos(longitud);
+        add(longitud);
 
         Component verticalStrut_4 = Box.createVerticalStrut(20);
         add(verticalStrut_4);
@@ -119,55 +129,7 @@ public class PanelLocalidades extends JPanel {
         scroll.setAlignmentX(Component.CENTER_ALIGNMENT);
         scroll.setPreferredSize(new Dimension(200, 200));
         add(scroll);
-    }
-
-    public void estilizarEntradaDatos(JTextField campoTexto) {
-        campoTexto.setFont(new Font("Arial", Font.PLAIN, 14));
-        campoTexto.setForeground(new Color(45, 45, 45));
-        campoTexto.setBackground(Color.WHITE);
-        campoTexto.setAlignmentX(Component.CENTER_ALIGNMENT); 
         
-        Dimension dim = new Dimension(150, 25);
-        campoTexto.setPreferredSize(dim);
-        campoTexto.setMaximumSize(dim); 
-        
-        campoTexto.setBorder(BorderFactory.createLineBorder(new Color(70, 70, 70)));
-    }
-    
-    
-    
-    public void estilizarContenedor(JPanel panel, String titulo) {
-        panel.setBackground(new Color(30, 30, 30));
-        panel.setBorder(BorderFactory.createTitledBorder(
-            BorderFactory.createLineBorder(new Color(60, 60, 60)), 
-            titulo, 
-            TitledBorder.LEFT, 
-            TitledBorder.TOP, 
-            new Font("Arial", Font.BOLD, 12), 
-            Color.GRAY
-        ));
-    }
-    
-    
-    public void estilizarBoton(JButton boton) {
-    	boton.setPreferredSize(new Dimension(80, 30)); 
-        
-        boton.setFocusPainted(false);
-        boton.setBorderPainted(true);
-        boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        boton.setFont(new Font("Arial", Font.BOLD, 11));
-        boton.setForeground(Color.WHITE);
-
-        if (boton.getText().equals("Agregar")) {
-            boton.setBackground(new Color(83, 141, 78));
-            boton.setBorder(BorderFactory.createLineBorder(new Color(45, 75, 42), 1));
-        } else if (boton.getText().equals("Eliminar")) {
-            boton.setBackground(new Color(150, 50, 50));
-            boton.setBorder(BorderFactory.createLineBorder(new Color(90, 30, 30), 1));
-        } else {
-            boton.setBackground(new Color(70, 70, 70));
-            boton.setBorder(BorderFactory.createLineBorder(new Color(50, 50, 50), 1));
-        }
     }
 
 	private void eliminar() {
@@ -188,8 +150,8 @@ public class PanelLocalidades extends JPanel {
 		
 		String nombreTexto = nombre.getText().trim();
 	    String provinciaTexto = provincia.getText().trim();
-	    String latTexto = lat.getText().trim();
-	    String lonTexto = lon.getText().trim();
+	    String latTexto = latitud.getText().trim();
+	    String lonTexto = longitud.getText().trim();
 
 	    // Validamos que no quede ningun campo vacio antes de agregarlo como dato
 	    if (nombreTexto.isEmpty() || provinciaTexto.isEmpty() || latTexto.isEmpty() || lonTexto.isEmpty()) {
@@ -223,6 +185,49 @@ public class PanelLocalidades extends JPanel {
 	        JOptionPane.showMessageDialog(this, e.getMessage(), "Error de Rango", JOptionPane.WARNING_MESSAGE);
 	    }
 	}
+
+	private void inicializarAtajoCapitales() {
+	    List<Localidad> listaCapitales = cargarCapitalesDesdeJSON();
+
+	    // Si esto imprime "DEBUG: Lista vacía", el problema es el archivo capitales.json
+	    if (listaCapitales == null || listaCapitales.isEmpty()) {
+	        System.out.println("DEBUG: Lista vacía o archivo no encontrado");
+	        return;
+	    }
+
+	    JLabel etiquetaAtajo = new JLabel("Cargar Capital (Atajo)");
+	    etiquetaAtajo.setForeground(Color.WHITE); // Fundamental para tu fondo oscuro
+	    etiquetaAtajo.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    this.add(etiquetaAtajo);
+
+	    atajoCapitales = new JComboBox<>(listaCapitales.toArray(new Localidad[0]));
+	    atajoCapitales.setMaximumSize(new Dimension(200, 25));
+	    atajoCapitales.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+	    // Listener para rellenar los campos
+	    atajoCapitales.addActionListener(e -> {
+	        Localidad seleccionada = (Localidad) atajoCapitales.getSelectedItem();
+	        if (seleccionada != null) {
+	            nombre.setText(seleccionada.toString());
+	            provincia.setText(seleccionada.getProvincia());
+	            latitud.setText(String.valueOf(seleccionada.getLatitud()));
+	            longitud.setText(String.valueOf(seleccionada.getLongitud()));
+	        }
+	    });
+
+	    this.add(atajoCapitales);
+	}
+	
+	/*a diferencia del que existe en planificador, como este txt no influye por la planificacion en si
+	hacemos que sea parte del panel*/
+	private List<Localidad> cargarCapitalesDesdeJSON() {
+	    try (FileReader lector = new FileReader("capitales.json")) {
+	        Type tipoLista = new TypeToken<ArrayList<Localidad>>(){}.getType();
+	        return new Gson().fromJson(lector, tipoLista);
+	    } catch (IOException e) {
+	        return new ArrayList<>(); // Si errra devolvemos una lista vacía
+	    }
+	}
 	
 	//lo usamos para cargar los archivos almacenados del txt
 	public void actualizarModeloCarga(Localidad loc) {
@@ -232,8 +237,8 @@ public class PanelLocalidades extends JPanel {
 	private void limpiarCampo() {
 	    nombre.setText("");
 	    provincia.setText("");
-	    lat.setText("");
-	    lon.setText("");
+	    latitud.setText("");
+	    longitud.setText("");
 	}
 	
     public List<Localidad> getLocalidades() {
@@ -244,5 +249,55 @@ public class PanelLocalidades extends JPanel {
         	ListaLocalidades.add(modelo.getElementAt(i));
         }
          return ListaLocalidades;
+    }
+    
+    
+    
+    //DISEÑOS
+    
+    public void estilizarEntradaDatos(JTextField campoTexto) {
+        campoTexto.setFont(new Font("Arial", Font.PLAIN, 14));
+        campoTexto.setForeground(new Color(45, 45, 45));
+        campoTexto.setBackground(Color.WHITE);
+        campoTexto.setAlignmentX(Component.CENTER_ALIGNMENT); 
+        
+        Dimension dim = new Dimension(150, 25);
+        campoTexto.setPreferredSize(dim);
+        campoTexto.setMaximumSize(dim); 
+        
+        campoTexto.setBorder(BorderFactory.createLineBorder(new Color(70, 70, 70)));
+    }
+      
+    public void estilizarContenedor(JPanel panel, String titulo) {
+        panel.setBackground(new Color(30, 30, 30));
+        panel.setBorder(BorderFactory.createTitledBorder(
+            BorderFactory.createLineBorder(new Color(60, 60, 60)), 
+            titulo, 
+            TitledBorder.LEFT, 
+            TitledBorder.TOP, 
+            new Font("Arial", Font.BOLD, 12), 
+            Color.GRAY
+        ));
+    }
+    
+    public void estilizarBoton(JButton boton) {
+    	boton.setPreferredSize(new Dimension(80, 30)); 
+        
+        boton.setFocusPainted(false);
+        boton.setBorderPainted(true);
+        boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        boton.setFont(new Font("Arial", Font.BOLD, 11));
+        boton.setForeground(Color.WHITE);
+
+        if (boton.getText().equals("Agregar")) {
+            boton.setBackground(new Color(83, 141, 78));
+            boton.setBorder(BorderFactory.createLineBorder(new Color(45, 75, 42), 1));
+        } else if (boton.getText().equals("Eliminar")) {
+            boton.setBackground(new Color(150, 50, 50));
+            boton.setBorder(BorderFactory.createLineBorder(new Color(90, 30, 30), 1));
+        } else {
+            boton.setBackground(new Color(70, 70, 70));
+            boton.setBorder(BorderFactory.createLineBorder(new Color(50, 50, 50), 1));
+        }
     }
 }

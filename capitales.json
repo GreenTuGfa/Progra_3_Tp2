@@ -1,0 +1,7 @@
+[
+  { "nombre": "La Plata", "provincia": "Buenos Aires", "latitud": -34.921, "longitud": -57.954 },
+  { "nombre": "Córdoba", "provincia": "Córdoba", "latitud": -31.413, "longitud": -64.181 },
+  { "nombre": "Mendoza", "provincia": "Mendoza", "latitud": -32.889, "longitud": -68.845 },
+  { "nombre": "Salta", "provincia": "Salta", "latitud": -24.785, "longitud": -65.411 },
+  { "nombre": "Ushuaia", "provincia": "Tierra del Fuego", "latitud": -54.801, "longitud": -68.303 }
+]

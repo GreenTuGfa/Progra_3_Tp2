@@ -1,4 +1,20 @@
-Bahia Blanca;Buenos Aires;-38.7183;-62.2663
-San Miguel;Buenos Aires;-34.543;-58.712
-Mendoza;Mendoza;-32.889;-68.844
-Potrero de los Funes;San Luis;-33.224;-66.234
+[
+  {
+    "nombre": "Jose C Paz",
+    "provincia": "Buenos Aires",
+    "latitud": -34.515,
+    "longitud": -58.768
+  },
+  {
+    "nombre": "Mendoza",
+    "provincia": "Mendoza",
+    "latitud": -32.89084,
+    "longitud": -68.82717
+  },
+  {
+    "nombre": "Ushuaia",
+    "provincia": "Tierra del Fuego",
+    "latitud": -54.801,
+    "longitud": -68.303
+  }
+]
