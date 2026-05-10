@@ -11,6 +11,9 @@ import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import herramientas.GestorArchivos;
+
 import java.lang.reflect.Type;
 
 import modelos.Localidad;
@@ -23,6 +26,7 @@ public class PanelLocalidades extends JPanel {
     private JList<Localidad> lista;
     private JTextField nombre, provincia, latitud, longitud;
 	private JComboBox<Localidad> atajoCapitales;
+	private GestorArchivos archivos = new GestorArchivos();
 
     public PanelLocalidades(Planificador planificador) {
 
@@ -171,10 +175,10 @@ public class PanelLocalidades extends JPanel {
 	}
 
 	private void inicializarAtajoCapitales() {
-	    List<Localidad> listaCapitales = cargarCapitalesDesdeJSON();
-
+		List<Localidad> capitales = archivos.cargar("capitales.json");
+		
 	    // Si esto imprime "DEBUG: Lista vacía", el problema es el archivo capitales.json
-	    if (listaCapitales == null || listaCapitales.isEmpty())
+	    if (capitales == null || capitales.isEmpty())
 	        return;
 	    
 	    //
@@ -183,7 +187,7 @@ public class PanelLocalidades extends JPanel {
 	    etiquetaAtajo.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    this.add(etiquetaAtajo);
 
-	    atajoCapitales = new JComboBox<>(listaCapitales.toArray(new Localidad[0]));
+	    atajoCapitales = new JComboBox<>(capitales.toArray(new Localidad[0]));
 	    atajoCapitales.setMaximumSize(new Dimension(200, 25));
 	    atajoCapitales.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -212,7 +216,7 @@ public class PanelLocalidades extends JPanel {
 	    }
 	}
 	
-	//lo usamos para cargar los archivos almacenados del txt
+	//lo usamos para cargar los archivos almacenados del JSON
 	public void actualizarModeloCarga(Localidad loc) {
 	    this.modelo.addElement(loc);
 	}

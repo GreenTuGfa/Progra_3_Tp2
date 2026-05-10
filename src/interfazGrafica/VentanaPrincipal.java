@@ -2,6 +2,8 @@ package interfazGrafica;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.List;
 
 import herramientas.CalculadorCostos;
@@ -16,15 +18,18 @@ public class VentanaPrincipal extends JFrame {
     private Planificador planificador;
 
     private PanelLocalidades panelLocalidades;
+    
     private PanelParametros panelParametros;
+    
     private PanelResultado panelResultado;
+    
     private PanelMapa panelMapa;
     
     public VentanaPrincipal() {
         //Inicializar la lógica y CARGAR los datos antes que la interfaz
         planificador = new Planificador(new CalculadorCostos());
-        planificador.cargarLocalidadesJSON("localidades.txt"); 
-
+        planificador.cargarDatos("localidades.json");
+      
         //Configuración básica de la ventana
         setTitle("Planificador de Fibra Óptica");
         setSize(1000, 700);
@@ -38,7 +43,8 @@ public class VentanaPrincipal extends JFrame {
         panelParametros = new PanelParametros();
         panelResultado = new PanelResultado();
         panelMapa = new PanelMapa();
-
+        
+        planificador.cargarDatos("localidades.json");
         //Recorremos las localidades cargadas del archivo y las metemos en el modelo del panel
         for (Localidad loc : planificador.localidades()) {
             panelLocalidades.actualizarModeloCarga(loc);
@@ -49,15 +55,15 @@ public class VentanaPrincipal extends JFrame {
         panelParametros.setAlignmentX(Component.RIGHT_ALIGNMENT);
         															
         JPanel panelIzquierdo = new JPanel();
-        darFormatoPanel(panelIzquierdo);
+        estilizarPanel(panelIzquierdo);
         
         JButton btnPlanificar = new JButton("Planificar");
-        darFormatoBtnPlanificar(btnPlanificar);
+        estilizarBoton(btnPlanificar);
         
         panelIzquierdo.add(btnPlanificar);
         
         JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT, panelMapa, panelResultado);
-        darFormatoSplit(split);
+        estulizarSplit(split);
 
         getContentPane().add(panelIzquierdo, BorderLayout.WEST);
         getContentPane().add(split, BorderLayout.CENTER);
@@ -65,11 +71,11 @@ public class VentanaPrincipal extends JFrame {
         setLocationRelativeTo(null);
 
         //Cierra y guarda el archivo
-        this.addWindowListener(new java.awt.event.WindowAdapter() {
+        this.addWindowListener(new WindowAdapter() {
             @Override
-            public void windowClosing(java.awt.event.WindowEvent e) {
-                planificador.guardarLocalidadesJSON("localidades.txt");
-                System.exit(0); 
+            public void windowClosing(WindowEvent e) {
+                planificador.guardarDatos("localidades.json");
+                System.exit(0);
             }
         });
 
@@ -96,7 +102,7 @@ public class VentanaPrincipal extends JFrame {
     }
     
     //aplicar buen diseño
-    public void darFormatoPanel(JPanel panel) {
+    public void estilizarPanel(JPanel panel) {
     	panelLocalidades.estilizarContenedor(panel, "");
     	panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setPreferredSize(new Dimension(300, 700));
@@ -107,7 +113,7 @@ public class VentanaPrincipal extends JFrame {
         panel.add(Box.createVerticalGlue());
     }
     
-    public void darFormatoBtnPlanificar(JButton btnPlanificar) {
+    public void estilizarBoton(JButton btnPlanificar) {
     	btnPlanificar.setMaximumSize(new Dimension(300, 40));
         btnPlanificar.setPreferredSize(new Dimension(200, 40));
         btnPlanificar.setAlignmentX(Component.RIGHT_ALIGNMENT);
@@ -120,7 +126,7 @@ public class VentanaPrincipal extends JFrame {
         btnPlanificar.addActionListener(e -> ejecutarPlanificacion());
     }
     
-	public void darFormatoSplit(JSplitPane split) {
+	public void estulizarSplit(JSplitPane split) {
 		split.setResizeWeight(0.5);
         split.setDividerLocation(0.4);
         split.setOneTouchExpandable(true);
