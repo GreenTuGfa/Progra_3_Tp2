@@ -17,40 +17,40 @@ class PlanificadorTest {
     private static final Localidad CHARATA = new Localidad("Charata", "Chaco", -27.2179902, -61.1873617);
     private static final Localidad SANTAROSA = new Localidad("Santa Rosa", "La Pampa", -36.61617, -64.28991);
 
-    private Planificador localidades1(){
-        Planificador planificador1 = new Planificador(new CalculadorCostos());
+    private Planificador cuatroLocalidades(){
+        Planificador planificador = new Planificador(new CalculadorCostos());
 
-        planificador1.agregarLocalidad(BAHIA);
-        planificador1.agregarLocalidad(PILAR);
-        planificador1.agregarLocalidad(CHARATA);
-        planificador1.agregarLocalidad(SANTAROSA);
+        planificador.agregarLocalidad(BAHIA);
+        planificador.agregarLocalidad(PILAR);
+        planificador.agregarLocalidad(CHARATA);
+        planificador.agregarLocalidad(SANTAROSA);
 
-        return planificador1;
+        return planificador;
     }
 
-    private Planificador localidades2(){
-        Planificador planificador1 = new Planificador(new CalculadorCostos());
+    private Planificador localidadRepetida(){
+        Planificador planificador = new Planificador(new CalculadorCostos());
 
-        planificador1.agregarLocalidad(BAHIA);
-        planificador1.agregarLocalidad(BAHIA);
-        return planificador1;
+        planificador.agregarLocalidad(BAHIA);
+        planificador.agregarLocalidad(BAHIA);
+        return planificador;
     }
 
-    private Planificador localidades3(){
-        Planificador planificador3 = new Planificador(new CalculadorCostos());
+    private Planificador tresLocalidades(){
+        Planificador planificador = new Planificador(new CalculadorCostos());
 
-        planificador3.agregarLocalidad(BAHIA);
-        planificador3.agregarLocalidad(PILAR);
-        planificador3.agregarLocalidad(CHARATA);
+        planificador.agregarLocalidad(BAHIA);
+        planificador.agregarLocalidad(PILAR);
+        planificador.agregarLocalidad(CHARATA);
 
-        return planificador3;
+        return planificador;
     }
 
     private GeneradorConexiones generador;
 
     @Test
     void agregarLocalidad() {
-        Planificador planificador = localidades3();
+        Planificador planificador = tresLocalidades();
         planificador.agregarLocalidad(new Localidad("Santa Rosa", "La Pampa", -36.61617, -64.28991));
         assertTrue(4== planificador.localidades().size()&&
                 planificador.localidades().get(3).toString().equals("Santa Rosa"));
@@ -58,7 +58,7 @@ class PlanificadorTest {
 
     @Test
     void eliminarLocalidad() {
-        Planificador planificador = localidades1();
+        Planificador planificador = cuatroLocalidades();
         planificador.eliminarLocalidad(SANTAROSA);
         assertTrue(3== planificador.localidades().size()&&
                 planificador.localidades().get(0).toString().equals("BahiaBlanca")&&
@@ -67,15 +67,15 @@ class PlanificadorTest {
     }
 
     @Test
-    void costoTotalDeLocalidades1(){
-        Planificador planificador= localidades1();
+    void costoTotalDeCuatroLocalidades(){
+        Planificador planificador= cuatroLocalidades();
         ParametrosCostos parametrosCostos = new ParametrosCostos(15, 8,10);
         assertEquals(26.731,17,planificador.costoTotal(planificador.planificar(parametrosCostos)));
     }
 
     @Test
     void costoTotalDeUnaCiudadConSigoMisma() {
-        Planificador planificador= localidades2();
+        Planificador planificador= localidadRepetida();
         ParametrosCostos parametrosCostos = new ParametrosCostos(15, 8,10);
         assertEquals(0,planificador.costoTotal(planificador.planificar(parametrosCostos)));
     }

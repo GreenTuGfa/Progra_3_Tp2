@@ -27,97 +27,70 @@ class GestorConectividadTest {
         localidades = new ArrayList<>(List.of(TIGRE, PILAR, LUJAN, ZARATE));
         gc = new GestorConectividad(localidades);
     }
-
-    // ── Inicialización ──────────────────────────────────────────────────────
-
     @Test
-    void testInicializacion_PilarEsSuPropioRepresentante() {
+    void inicializacion_autocontrol() {
         assertEquals(PILAR, gc.find(PILAR));
     }
 
     @Test
-    void testInicializacion_TigreYLujanEnDistintosComponentes() {
+    void inicializacion_aislamiento() {
         assertNotEquals(gc.find(TIGRE), gc.find(LUJAN));
     }
 
-    // ── Union básica ────────────────────────────────────────────────────────
-
     @Test
-    void testUnion_TigreYPilar_quedanEnMismoComponente() {
+    void union_conectaLocalidades() {
         gc.union(TIGRE, PILAR);
         assertEquals(gc.find(TIGRE), gc.find(PILAR));
     }
 
     @Test
-    void testUnion_TigreYPilar_noAfectaALujan_desdePilar() {
+    void union_noAfectaTerceros() {
         gc.union(TIGRE, PILAR);
         assertNotEquals(gc.find(PILAR), gc.find(LUJAN));
     }
 
-    // ── Transitividad ───────────────────────────────────────────────────────
-
     @Test
-    void testUnion_transitiva_TigreConectadoALujan() {
+    void union_esTransitiva() {
         gc.union(TIGRE, PILAR);
         gc.union(PILAR, LUJAN);
         assertEquals(gc.find(TIGRE), gc.find(LUJAN));
     }
+
     @Test
-    void testUnion_transitiva_PilarConectadoAZarate() {
+    void union_cadenaLarga() {
         gc.union(TIGRE, PILAR);
         gc.union(PILAR, LUJAN);
         gc.union(LUJAN, ZARATE);
         assertEquals(gc.find(PILAR), gc.find(ZARATE));
     }
 
-    // ── Idempotencia ────────────────────────────────────────────────────────
-
     @Test
-    void testUnion_duplicada_sigueConectado() {
+    void union_duplicada() {
         gc.union(TIGRE, PILAR);
         gc.union(TIGRE, PILAR);
         assertEquals(gc.find(TIGRE), gc.find(PILAR));
     }
 
     @Test
-    void testUnion_consigoMismo_sigueRepresentandoseASiMismo() {
+    void union_consigoMismo() {
         gc.union(TIGRE, TIGRE);
         assertEquals(TIGRE, gc.find(TIGRE));
     }
 
-    // ── Path compression ────────────────────────────────────────────────────
-
     @Test
-    void testFind_pathCompression_TigreDevuelveMismaRaizDespuesDeComprimir() {
+    void find_esConsistente() {
         gc.union(TIGRE, PILAR);
         gc.union(PILAR, LUJAN);
-        gc.union(LUJAN, ZARATE);
         Localidad raiz = gc.find(TIGRE);
         assertEquals(raiz, gc.find(TIGRE));
     }
 
     @Test
-    void testFind_pathCompression_PilarApuntaAMismaRaizQueTigre() {
-        gc.union(TIGRE, PILAR);
-        gc.union(PILAR, LUJAN);
-        gc.union(LUJAN, ZARATE);
-        assertEquals(gc.find(TIGRE), gc.find(PILAR));
-    }
-
-
-    // ── Componentes independientes ──────────────────────────────────────────
-
-    @Test
-    void testDosComponentes_LujanYZarateConectados() {
+    void componentes_multiplesGrupos() {
         gc.union(TIGRE, PILAR);
         gc.union(LUJAN, ZARATE);
+
         assertEquals(gc.find(LUJAN), gc.find(ZARATE));
-    }
-
-    @Test
-    void testDosComponentes_TigreYLujanEnDistintosComponentes() {
-        gc.union(TIGRE, PILAR);
-        gc.union(LUJAN, ZARATE);
         assertNotEquals(gc.find(TIGRE), gc.find(LUJAN));
     }
 
