@@ -61,6 +61,8 @@ public class PanelParametros extends JPanel {
         );
     }
     
+    //DISEÑO
+    
     public void estilizarEntradaDatos(JTextField campoTexto) {
         campoTexto.setFont(new Font("Arial", Font.PLAIN, 14));
         campoTexto.setForeground(new Color(45, 45, 45));

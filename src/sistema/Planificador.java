@@ -12,6 +12,7 @@ import java.lang.reflect.Type;
 import herramientas.CalculadorCostos;
 import herramientas.GeneradorConexiones;
 import herramientas.GeneradorRedMinima;
+import herramientas.GestorArchivos;
 import modelos.Conexion;
 import modelos.Localidad;
 import modelos.ParametrosCostos;
@@ -27,6 +28,8 @@ public class Planificador {
 
 	private List<Localidad> localidades;
 	private GeneradorConexiones generador;
+	private GestorArchivos archivos = new GestorArchivos();
+
 	
 	public Planificador(CalculadorCostos calculador) {
 		this.localidades = new ArrayList<>();
@@ -60,40 +63,11 @@ public class Planificador {
 	
 	
 	//METODOS PARA EL ALMACENAMIENTO DEL ARCHIVO 
-	
-	public void guardarLocalidadesJSON(String rutaArchivo) {
-	    Gson configuradorGson = new GsonBuilder().setPrettyPrinting().create();
-	    String contenidoJson = configuradorGson.toJson(this.localidades);
-
-	    try (FileOutputStream flujoSalida = new FileOutputStream(rutaArchivo);
-	         OutputStreamWriter escritor = new OutputStreamWriter(flujoSalida)) {
-	        escritor.write(contenidoJson);
-	    } catch (IOException e) {
-	        System.err.println("Error al guardar: " + e.getMessage());
-	    }
+	public void guardarDatos(String ruta) {
+	    archivos.guardar(this.localidades, ruta);
 	}
-	
-	public void cargarLocalidadesJSON(String rutaArchivo) {
-	    File archivo = new File(rutaArchivo);
-	    if (!archivo.exists()) return;
 
-	    try (FileInputStream flujoEntrada = new FileInputStream(archivo);
-	         Scanner lector = new Scanner(flujoEntrada)) {
-	        
-	        // Leer todo el archivo en un String
-	        StringBuilder constructorTexto = new StringBuilder();
-	        while (lector.hasNextLine()) {
-	            constructorTexto.append(lector.nextLine());
-	        }
-
-	        // Definir el tipo de la lista para GSON
-	        Type tipoLista = new TypeToken<ArrayList<Localidad>>(){}.getType();
-	        
-	        Gson configuradorGson = new Gson();
-	        this.localidades = configuradorGson.fromJson(constructorTexto.toString(), tipoLista);
-	        
-	    } catch (Exception e) {
-	        System.err.println("Error al cargar: " + e.getMessage());
-	    }
+	public void cargarDatos(String ruta) {
+	    this.localidades = archivos.cargar(ruta);
 	}
 }
