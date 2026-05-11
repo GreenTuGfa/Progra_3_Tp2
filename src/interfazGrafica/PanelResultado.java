@@ -25,10 +25,10 @@ public class PanelResultado extends JPanel {
 
         area.setText("Resultado \n\n");
 
-        for (Conexion c : red) {
+        for (Conexion conexion : red) {
             area.append(
-                "De " + c.getOrigen() + " a " + c.getDestino() +
-                " = $" + String.format("%.2f", c.getCosto()) + "\n"
+                "De " + conexion.getOrigen() + " a " + conexion.getDestino() +
+                " = $" + String.format("%.2f", conexion.getCosto()) + "\n"
             );
         }
 

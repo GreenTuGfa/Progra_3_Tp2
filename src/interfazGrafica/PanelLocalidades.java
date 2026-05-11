@@ -92,15 +92,15 @@ public class PanelLocalidades extends JPanel {
         
         JButton agregar = new JButton("Agregar");
         estilizarBoton(agregar);
-        agregar.addActionListener(e -> agregar());
+        agregar.addActionListener(excepcion -> agregar());
 
         JButton eliminar = new JButton("Eliminar");
         estilizarBoton(eliminar);
-        eliminar.addActionListener(e -> eliminar());
+        eliminar.addActionListener(excepcion -> eliminar());
 
         JButton limpiar = new JButton("Limpiar");
         estilizarBoton(limpiar);
-        limpiar.addActionListener(e -> limpiarCampo());
+        limpiar.addActionListener(excepcion -> limpiarCampo());
 
         panelBotones.add(agregar);
         panelBotones.add(eliminar);
@@ -163,15 +163,15 @@ public class PanelLocalidades extends JPanel {
 	        }
 
 	        //con los datos a insertar ya verificados, agregamos finalmente la Localidad
-	        Localidad l = new Localidad(nombreTexto, provinciaTexto, latitud, longitud);
-	        planificador.agregarLocalidad(l);
-	        modelo.addElement(l);
+	        Localidad localidad = new Localidad(nombreTexto, provinciaTexto, latitud, longitud);
+	        planificador.agregarLocalidad(localidad);
+	        modelo.addElement(localidad);
 	        limpiarCampo();
 
-	    } catch (NumberFormatException e) {
+	    } catch (NumberFormatException excepcion) {
 	        JOptionPane.showMessageDialog(this, "La latitud y longitud deben ser números válidos (ej: -34.51).", "Error de Formato", JOptionPane.ERROR_MESSAGE);
-	    } catch (IllegalArgumentException e) {
-	        JOptionPane.showMessageDialog(this, e.getMessage(), "Error de Rango", JOptionPane.WARNING_MESSAGE);
+	    } catch (IllegalArgumentException excepcion) {
+	        JOptionPane.showMessageDialog(this, excepcion.getMessage(), "Error de Rango", JOptionPane.WARNING_MESSAGE);
 	    }
 	}
 	
@@ -192,7 +192,7 @@ public class PanelLocalidades extends JPanel {
 	    atajoCapitales.setMaximumSize(new Dimension(200, 25));
 	    atajoCapitales.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-	    atajoCapitales.addActionListener(e -> {
+	    atajoCapitales.addActionListener(excepcion -> {
 	        Localidad seleccionada = (Localidad) atajoCapitales.getSelectedItem();
 	        if (seleccionada != null) {
 	            nombre.setText(seleccionada.toString());

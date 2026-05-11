@@ -32,6 +32,6 @@ public class Conexion implements Comparable<Conexion>{
 	@Override
 	public int compareTo(Conexion c) {
 		
-		return Double.compare(this.costo, c.costo); //Devuelve el mas chico
+		return Double.compare(this.costo, c.costo); 
 	}
 }

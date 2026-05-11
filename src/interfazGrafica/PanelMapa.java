@@ -26,23 +26,23 @@ public class PanelMapa extends JPanel {
         mapa.removeAllMapPolygons();
 
         //dibujar puntos localidades
-        for (Localidad l : localidades) {
-            Coordinate coord = new Coordinate(l.getLatitud(), l.getLongitud());
+        for (Localidad localidad : localidades) {
+            Coordinate coord = new Coordinate(localidad.getLatitud(), localidad.getLongitud());
             MapMarkerDot marker = new MapMarkerDot(coord);
-            marker.setName(l.toString());
+            marker.setName(localidad.toString());
             mapa.addMapMarker(marker);
         }
 
         //AGM para dibujar las lineas
-        for (Conexion c : conexiones) {
-            Coordinate c1 = new Coordinate(c.getOrigen().getLatitud(), c.getOrigen().getLongitud());
-            Coordinate c2 = new Coordinate(c.getDestino().getLatitud(), c.getDestino().getLongitud());
+        for (Conexion conexion : conexiones) {
+            Coordinate conexion1 = new Coordinate(conexion.getOrigen().getLatitud(), conexion.getOrigen().getLongitud());
+            Coordinate conexion2 = new Coordinate(conexion.getDestino().getLatitud(), conexion.getDestino().getLongitud());
             
 
             List<Coordinate> puntos = new ArrayList<>();
-            puntos.add(c1);
-            puntos.add(c2);
-            puntos.add(c2); 
+            puntos.add(conexion1);
+            puntos.add(conexion2);
+            puntos.add(conexion2); 
             // Se añade el ultimo punto dos veces para asegurar que sea compatible con MapPolygonImpl (pide 3 puntos para cerrar el "poligono")
             
             mapa.addMapPolygon(new MapPolygonImpl(puntos));
@@ -50,8 +50,8 @@ public class PanelMapa extends JPanel {
 
         //centra el zoom en la 1era localidad si esta existe
         if (!localidades.isEmpty()) {
-            Localidad l = localidades.get(0);
-            mapa.setDisplayPosition(new Coordinate(l.getLatitud(), l.getLongitud()), 6);
+            Localidad localidad = localidades.get(0);
+            mapa.setDisplayPosition(new Coordinate(localidad.getLatitud(), localidad.getLongitud()), 6);
         }
     }
 }
