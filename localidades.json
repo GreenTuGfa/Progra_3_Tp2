@@ -1,14 +1,1 @@
-[
-  {
-    "nombre": "La Plata",
-    "provincia": "Buenos Aires",
-    "latitud": -34.921,
-    "longitud": -57.954
-  },
-  {
-    "nombre": "Córdoba",
-    "provincia": "Córdoba",
-    "latitud": -31.413,
-    "longitud": -64.181
-  }
-]
+[]
