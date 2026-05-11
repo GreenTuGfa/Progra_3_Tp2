@@ -1,10 +1,10 @@
-package herramientas;
+package sistema.herramientas;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import modelos.Localidad;
+import sistema.modelos.Localidad;
 
 /**
  * IMPLEMENTA EL UNION FIND

@@ -5,7 +5,7 @@ import javax.swing.border.TitledBorder;
 
 import java.awt.*;
 
-import modelos.ParametrosCostos;
+import sistema.modelos.ParametrosCostos;
 
 public class PanelParametros extends JPanel {
 

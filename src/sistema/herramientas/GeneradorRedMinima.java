@@ -1,10 +1,10 @@
-package herramientas;
+package sistema.herramientas;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import modelos.Conexion;
-import modelos.Localidad;
+import sistema.modelos.Conexion;
+import sistema.modelos.Localidad;
 
 public class GeneradorRedMinima { //IMplementa el AGM
 

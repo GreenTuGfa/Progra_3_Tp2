@@ -7,7 +7,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.List;
 
-import modelos.Conexion;
+import sistema.modelos.Conexion;
 
 public class PanelResultado extends JPanel {
 

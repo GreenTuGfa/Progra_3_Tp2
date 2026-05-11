@@ -1,6 +1,6 @@
-package herramientas;
+package sistema.herramientas;
 
-import modelos.Localidad;
+import sistema.modelos.Localidad;
 
 public class CalculadorDistancia {
 

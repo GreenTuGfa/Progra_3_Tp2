@@ -1,9 +1,9 @@
 package testSistema;
 
-import herramientas.CalculadorCostos;
-import herramientas.GeneradorConexiones;
-import modelos.Localidad;
-import modelos.ParametrosCostos;
+import sistema.herramientas.CalculadorCostos;
+import sistema.herramientas.GeneradorConexiones;
+import sistema.modelos.Localidad;
+import sistema.modelos.ParametrosCostos;
 import org.junit.jupiter.api.Test;
 import sistema.Planificador;
 

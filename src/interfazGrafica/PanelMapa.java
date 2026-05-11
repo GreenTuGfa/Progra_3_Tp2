@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.openstreetmap.gui.jmapviewer.*;
 
-import modelos.Conexion;
-import modelos.Localidad;
+import sistema.modelos.Conexion;
+import sistema.modelos.Localidad;
 
 public class PanelMapa extends JPanel {
 

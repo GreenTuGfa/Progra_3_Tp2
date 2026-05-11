@@ -1,4 +1,4 @@
-package modelos;
+package sistema.modelos;
 
 /**
  *	La idea de la clase es poder tener distintos parametros con costes, para un mismo 'CalculadorCoste',

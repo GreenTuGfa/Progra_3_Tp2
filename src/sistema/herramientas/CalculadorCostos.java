@@ -1,7 +1,7 @@
-package herramientas;
+package sistema.herramientas;
 
-import modelos.Localidad;
-import modelos.ParametrosCostos;
+import sistema.modelos.Localidad;
+import sistema.modelos.ParametrosCostos;
 
 public class CalculadorCostos {
 

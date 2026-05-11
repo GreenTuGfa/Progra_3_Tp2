@@ -6,10 +6,10 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
 
-import herramientas.CalculadorCostos;
-import modelos.Conexion;
-import modelos.Localidad;
-import modelos.ParametrosCostos;
+import sistema.herramientas.CalculadorCostos;
+import sistema.modelos.Conexion;
+import sistema.modelos.Localidad;
+import sistema.modelos.ParametrosCostos;
 import sistema.Planificador;
 
 

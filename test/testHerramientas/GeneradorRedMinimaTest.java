@@ -7,9 +7,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import herramientas.GeneradorRedMinima;
-import modelos.Conexion;
-import modelos.Localidad;
+import sistema.herramientas.GeneradorRedMinima;
+import sistema.modelos.Conexion;
+import sistema.modelos.Localidad;
 
 class GeneradorRedMinimaTest {
 

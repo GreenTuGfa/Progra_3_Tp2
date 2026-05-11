@@ -1,4 +1,4 @@
-package herramientas;
+package sistema.herramientas;
 
 import java.io.File;
 import java.io.FileReader;
@@ -12,7 +12,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-import modelos.Localidad;
+import sistema.modelos.Localidad;
 
 public class GestorArchivos {
     private Gson gson;

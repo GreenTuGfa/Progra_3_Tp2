@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import herramientas.CalculadorDistancia;
-import modelos.Localidad;
+import sistema.herramientas.CalculadorDistancia;
+import sistema.modelos.Localidad;
 
 class CalculadorDistanciaTest {
 

@@ -7,11 +7,11 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import herramientas.CalculadorCostos;
-import herramientas.GeneradorConexiones;
-import modelos.Conexion;
-import modelos.Localidad;
-import modelos.ParametrosCostos;
+import sistema.herramientas.CalculadorCostos;
+import sistema.herramientas.GeneradorConexiones;
+import sistema.modelos.Conexion;
+import sistema.modelos.Localidad;
+import sistema.modelos.ParametrosCostos;
 
 class GeneradorConexionesTest {
 	

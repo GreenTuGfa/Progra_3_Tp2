@@ -1,27 +1,15 @@
 package sistema;
 
 import java.util.List;
-import java.util.Scanner;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import sistema.herramientas.CalculadorCostos;
+import sistema.herramientas.GeneradorConexiones;
+import sistema.herramientas.GeneradorRedMinima;
+import sistema.herramientas.GestorArchivos;
+import sistema.modelos.Conexion;
+import sistema.modelos.Localidad;
+import sistema.modelos.ParametrosCostos;
 
-import com.google.gson.reflect.TypeToken;
-import java.lang.reflect.Type;
-
-import herramientas.CalculadorCostos;
-import herramientas.GeneradorConexiones;
-import herramientas.GeneradorRedMinima;
-import herramientas.GestorArchivos;
-import modelos.Conexion;
-import modelos.Localidad;
-import modelos.ParametrosCostos;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class Planificador {
