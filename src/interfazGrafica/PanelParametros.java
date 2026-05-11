@@ -21,8 +21,7 @@ public class PanelParametros extends JPanel {
     	add(Box.createVerticalStrut(20));
 
     	JLabel l1 = new JLabel("Costo por km");
-        l1.setForeground(Color.WHITE);
-    	l1.setAlignmentX(Component.CENTER_ALIGNMENT);
+    	estilizarJLabel(l1);
     	add(l1);
 
     	precioKm = new JTextField(10);
@@ -32,8 +31,7 @@ public class PanelParametros extends JPanel {
     	add(Box.createVerticalStrut(20));
 
     	JLabel l2 = new JLabel("% aumento (>300km)");
-        l2.setForeground(Color.WHITE);
-    	l2.setAlignmentX(Component.CENTER_ALIGNMENT);
+    	estilizarJLabel(l2);
     	add(l2);
 
     	porcentaje = new JTextField(10);
@@ -43,8 +41,7 @@ public class PanelParametros extends JPanel {
     	add(Box.createVerticalStrut(20));
 
     	JLabel l3 = new JLabel("Costo fijo provincia");
-        l3.setForeground(Color.WHITE);
-    	l3.setAlignmentX(Component.CENTER_ALIGNMENT);
+    	estilizarJLabel(l3);
     	add(l3);
 
     	costoFijo = new JTextField(10);
@@ -86,5 +83,10 @@ public class PanelParametros extends JPanel {
             new Font("Arial", Font.BOLD, 12), 
             Color.GRAY
         ));
+    }
+    
+    public void estilizarJLabel(JLabel label) {
+    	label.setForeground(Color.WHITE);
+    	label.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
 }

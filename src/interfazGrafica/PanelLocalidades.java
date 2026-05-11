@@ -116,6 +116,7 @@ public class PanelLocalidades extends JPanel {
         lista = new JList<>(modelo);
         
         JScrollPane scroll = new JScrollPane(lista);
+        estilizarScroll(scroll);
         add(scroll);
         
     }
@@ -173,15 +174,15 @@ public class PanelLocalidades extends JPanel {
 	        JOptionPane.showMessageDialog(this, e.getMessage(), "Error de Rango", JOptionPane.WARNING_MESSAGE);
 	    }
 	}
-
+	
+	/*a diferencia del que existe en planificador, como este JSON no influye por la planificacion en si
+	hacemos que sea parte del panel*/
 	private void inicializarAtajoCapitales() {
 		List<Localidad> capitales = archivos.cargar("capitales.json");
 		
-	    // Si esto imprime "DEBUG: Lista vacía", el problema es el archivo capitales.json
 	    if (capitales == null || capitales.isEmpty())
 	        return;
 	    
-	    //
 	    JLabel etiquetaAtajo = new JLabel("Cargar Capitales Arg");
 	    etiquetaAtajo.setForeground(Color.WHITE);
 	    etiquetaAtajo.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -191,7 +192,6 @@ public class PanelLocalidades extends JPanel {
 	    atajoCapitales.setMaximumSize(new Dimension(200, 25));
 	    atajoCapitales.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-	    // Listener para rellenar los campos
 	    atajoCapitales.addActionListener(e -> {
 	        Localidad seleccionada = (Localidad) atajoCapitales.getSelectedItem();
 	        if (seleccionada != null) {
@@ -203,17 +203,6 @@ public class PanelLocalidades extends JPanel {
 	    });
 
 	    this.add(atajoCapitales);
-	}
-	
-	/*a diferencia del que existe en planificador, como este txt no influye por la planificacion en si
-	hacemos que sea parte del panel*/
-	private List<Localidad> cargarCapitalesDesdeJSON() {
-	    try (FileReader lector = new FileReader("capitales.json")) {
-	        Type tipoLista = new TypeToken<ArrayList<Localidad>>(){}.getType();
-	        return new Gson().fromJson(lector, tipoLista);
-	    } catch (IOException e) {
-	        return new ArrayList<>(); // Si errra devolvemos una lista vacía
-	    }
 	}
 	
 	//lo usamos para cargar los archivos almacenados del JSON
