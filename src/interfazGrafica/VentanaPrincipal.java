@@ -31,7 +31,7 @@ public class VentanaPrincipal extends JFrame {
         planificador.cargarDatos("localidades.json");
       
         //Configuración básica de la ventana
-        setTitle("Planificador de Fibra Óptica");
+        setTitle("Conectando localidades a la velocidad de la luz");
         setSize(1000, 700);
         
         
@@ -46,8 +46,8 @@ public class VentanaPrincipal extends JFrame {
         
         planificador.cargarDatos("localidades.json");
         //Recorremos las localidades cargadas del archivo y las metemos en el modelo del panel
-        for (Localidad loc : planificador.localidades()) {
-            panelLocalidades.actualizarModeloCarga(loc);
+        for (Localidad localidad : planificador.localidades()) {
+            panelLocalidades.actualizarModeloCarga(localidad);
         }
 
         panelLocalidades.setAlignmentX(Component.RIGHT_ALIGNMENT);
@@ -59,11 +59,12 @@ public class VentanaPrincipal extends JFrame {
         
         JButton btnPlanificar = new JButton("Planificar");
         estilizarBoton(btnPlanificar);
-        
+        btnPlanificar.addActionListener(excepcion -> ejecutarPlanificacion());
+
         panelIzquierdo.add(btnPlanificar);
         
         JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT, panelMapa, panelResultado);
-        estulizarSplit(split);
+        estilizarSplit(split);
 
         getContentPane().add(panelIzquierdo, BorderLayout.WEST);
         getContentPane().add(split, BorderLayout.CENTER);
@@ -82,21 +83,19 @@ public class VentanaPrincipal extends JFrame {
         setVisible(true);
     }
     
-    
-
     private void ejecutarPlanificacion() {
         try {
-            ParametrosCostos param = panelParametros.getParametros();
+            ParametrosCostos parametro = panelParametros.getParametros();
 
-            List<Conexion> red = planificador.planificar(param);
+            List<Conexion> red = planificador.planificar(parametro);
 
             panelResultado.mostrar(red, planificador.costoTotal(red));
 
             PanelMapa.mostrar(panelLocalidades.getLocalidades(), red);
 
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException excepcion) {
             JOptionPane.showMessageDialog(this, "Asegurate de que todos los parametros de costo de los numeros sean válidos.", "Error en Parámetros", JOptionPane.ERROR_MESSAGE);
-        } catch (Exception e) {
+        } catch (Exception excepcion) {
             JOptionPane.showMessageDialog(this, "Ocurrio un error al planificar :(");
         }
     }
@@ -123,10 +122,9 @@ public class VentanaPrincipal extends JFrame {
         btnPlanificar.setFocusPainted(false);
         btnPlanificar.setBorder(BorderFactory.createLineBorder(new Color(60, 100, 55), 2));
         btnPlanificar.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btnPlanificar.addActionListener(e -> ejecutarPlanificacion());
     }
     
-	public void estulizarSplit(JSplitPane split) {
+	public void estilizarSplit(JSplitPane split) {
 		split.setResizeWeight(0.5);
         split.setDividerLocation(0.4);
         split.setOneTouchExpandable(true);
