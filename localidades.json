@@ -1,1 +1,50 @@
-[]
+[
+  {
+    "nombre": "San Fernando del Valle de Catamarca",
+    "provincia": "Catamarca",
+    "latitud": -28.4696,
+    "longitud": -65.7852
+  },
+  {
+    "nombre": "Córdoba",
+    "provincia": "Córdoba",
+    "latitud": -31.4167,
+    "longitud": -64.1833
+  },
+  {
+    "nombre": "Formosa",
+    "provincia": "Formosa",
+    "latitud": -26.1833,
+    "longitud": -58.1833
+  },
+  {
+    "nombre": "Resistencia",
+    "provincia": "Chaco",
+    "latitud": -27.4514,
+    "longitud": -58.9867
+  },
+  {
+    "nombre": "Corrientes",
+    "provincia": "Corrientes",
+    "latitud": -27.4833,
+    "longitud": -58.8167
+  },
+  {
+    "nombre": "Paraná",
+    "provincia": "Entre Ríos",
+    "latitud": -31.7331,
+    "longitud": -60.5297
+  },
+  {
+    "nombre": "Ushuaia",
+    "provincia": "Tierra del Fuego",
+    "latitud": -54.8019,
+    "longitud": -68.303
+  },
+  {
+    "nombre": "San Miguel de Tucumán",
+    "provincia": "Tucumán",
+    "latitud": -26.8167,
+    "longitud": -65.2167
+  }
+]

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openstreetmap.gui.jmapviewer.*;
+import org.openstreetmap.gui.jmapviewer.tilesources.OsmTileSource;
 
 import sistema.modelos.Conexion;
 import sistema.modelos.Localidad;
@@ -17,6 +18,7 @@ public class PanelMapa extends JPanel {
     public PanelMapa() {
         setLayout(new BorderLayout());
         mapa = new JMapViewer();
+        mapa.setTileSource(new OsmTileSource.TransportMap());
         add(mapa, BorderLayout.CENTER);
     }
 
@@ -28,30 +30,41 @@ public class PanelMapa extends JPanel {
         //dibujar puntos localidades
         for (Localidad localidad : localidades) {
             Coordinate coord = new Coordinate(localidad.getLatitud(), localidad.getLongitud());
-            MapMarkerDot marker = new MapMarkerDot(coord);
-            marker.setName(localidad.toString());
+            MapMarkerDot marker = new MapMarkerDot(localidad.toString(), coord);
+            
+            estilizarPunto(marker);
+            
             mapa.addMapMarker(marker);
         }
 
         //AGM para dibujar las lineas
         for (Conexion conexion : conexiones) {
-            Coordinate conexion1 = new Coordinate(conexion.getOrigen().getLatitud(), conexion.getOrigen().getLongitud());
-            Coordinate conexion2 = new Coordinate(conexion.getDestino().getLatitud(), conexion.getDestino().getLongitud());
-            
-
             List<Coordinate> puntos = new ArrayList<>();
-            puntos.add(conexion1);
-            puntos.add(conexion2);
-            puntos.add(conexion2); 
-            // Se añade el ultimo punto dos veces para asegurar que sea compatible con MapPolygonImpl (pide 3 puntos para cerrar el "poligono")
+            puntos.add(new Coordinate(conexion.getOrigen().getLatitud(), conexion.getOrigen().getLongitud()));
+            puntos.add(new Coordinate(conexion.getDestino().getLatitud(), conexion.getDestino().getLongitud()));
+            puntos.add(new Coordinate(conexion.getDestino().getLatitud(), conexion.getDestino().getLongitud()));
+
+            MapPolygonImpl linea = new MapPolygonImpl(puntos);
             
-            mapa.addMapPolygon(new MapPolygonImpl(puntos));
+            estilizarLinea(linea);
+            
+            mapa.addMapPolygon(linea);
         }
 
-        //centra el zoom en la 1era localidad si esta existe
+        //centra el zoom en la 1era localidad (si es que existe claro esta)
         if (!localidades.isEmpty()) {
             Localidad localidad = localidades.get(0);
             mapa.setDisplayPosition(new Coordinate(localidad.getLatitud(), localidad.getLongitud()), 6);
         }
     }
+    
+    public static void estilizarPunto(MapMarkerDot marker) {
+    	 marker.getStyle().setBackColor(new Color(83, 141, 78));
+         marker.getStyle().setColor(Color.WHITE);              
+         marker.getStyle().setFont(new Font("Arial", Font.BOLD, 12));
+    }
+    public static void estilizarLinea(MapPolygonImpl linea) {
+    	linea.getStyle().setColor(new Color(45, 75, 42)); 
+        linea.getStyle().setStroke(new BasicStroke(3f));
+   }
 }
