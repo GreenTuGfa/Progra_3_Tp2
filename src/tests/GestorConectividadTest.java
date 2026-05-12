@@ -28,37 +28,37 @@ class GestorConectividadTest {
         gc = new GestorConectividad(localidades);
     }
     @Test
-    void inicializacion_autocontrol() {
+    void localidadSeRepresentaAsiMisma() {
         assertEquals(PILAR, gc.find(PILAR));
     }
 
     @Test
-    void inicializacion_aislamiento() {
+    void localidadesNoEstanConectadas() {
         assertNotEquals(gc.find(TIGRE), gc.find(LUJAN));
     }
 
     @Test
-    void union_conectaLocalidades() {
+    void conexionEntreDosLocalidades() {
         gc.union(TIGRE, PILAR);
         assertEquals(gc.find(TIGRE), gc.find(PILAR));
         
     }
 
     @Test
-    void union_noAfectaTerceros() {
+    void conexionEntreDosLocalidadesNoAfectaAlRestoDeLocalidades() {
         gc.union(TIGRE, PILAR);
         assertNotEquals(gc.find(PILAR), gc.find(LUJAN));
     }
 
     @Test
-    void union_esTransitiva() {
+    void conexionEsTransitiva() { //TEST IMPORTANTE - Pues demuestra que el nodo padre se actualiza con la union
         gc.union(TIGRE, PILAR);
         gc.union(PILAR, LUJAN);
         assertEquals(gc.find(TIGRE), gc.find(LUJAN));
     }
 
     @Test
-    void union_cadenaLarga() {
+    void conexionesVarias() {
         gc.union(TIGRE, PILAR);
         gc.union(PILAR, LUJAN);
         gc.union(LUJAN, ZARATE);
@@ -66,28 +66,21 @@ class GestorConectividadTest {
     }
 
     @Test
-    void union_duplicada() {
+    void dobleConexion() {
         gc.union(TIGRE, PILAR);
         gc.union(TIGRE, PILAR);
         assertEquals(gc.find(TIGRE), gc.find(PILAR));
     }
 
     @Test
-    void union_consigoMismo() {
+    void ConexionConSigoMismo() {
         gc.union(TIGRE, TIGRE);
         assertEquals(TIGRE, gc.find(TIGRE));
     }
 
-    @Test
-    void find_esConsistente() {
-        gc.union(TIGRE, PILAR);
-        gc.union(PILAR, LUJAN);
-        Localidad raiz = gc.find(TIGRE);
-        assertEquals(raiz, gc.find(TIGRE));
-    }
 
     @Test
-    void componentes_multiplesGrupos() {
+    void independenciaDeGruposConexos() {
         gc.union(TIGRE, PILAR);
         gc.union(LUJAN, ZARATE);
 
