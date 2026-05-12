@@ -1,6 +1,7 @@
-package testHerramientas;
+package tests;
 
 import sistema.herramientas.GestorConectividad;
+
 import sistema.modelos.Localidad;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GestorConectividadTest {
@@ -39,6 +41,7 @@ class GestorConectividadTest {
     void union_conectaLocalidades() {
         gc.union(TIGRE, PILAR);
         assertEquals(gc.find(TIGRE), gc.find(PILAR));
+        
     }
 
     @Test

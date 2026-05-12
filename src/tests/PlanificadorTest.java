@@ -1,4 +1,4 @@
-package testSistema;
+package tests;
 
 import sistema.herramientas.CalculadorCostos;
 import sistema.herramientas.GeneradorConexiones;
